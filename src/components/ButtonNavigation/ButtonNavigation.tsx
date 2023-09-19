@@ -20,7 +20,11 @@ const ButtonNavigation:React.FC <ButtonNavigationProps>= ({option}) => {
     return(
         <div className="inline-block">
             <button
-                className="flex flex-col h-14 md:h-8 w-14 md:w-32 justify-center md:justify-start items-center p-2 gap-2 text-current rounded-md cursor-pointer active:scale-95"
+                className="
+                    flex flex-col h-14 w-14 justify-center items-center p-2 gap-2 text-light-font bg-transparent rounded-lg cursor-pointer shadow-button 
+                    dark:text-dark-font dark:shadow-dark-button
+                    active:shadow-press-button active:dark:shadow-dark-press-button                    
+                    md:flex-row md:justify-start md:h-9 md:w-40 md:font-roboto md:text-xs md:items-center md:shadow-button"
                 onClick={() => handleClick()}
             >
                 {icon}

@@ -9,18 +9,28 @@ const config: Config = {
   darkMode:'class',
   theme: {
     extend: {
-      colors:{
-        'light-background':'#eff2f9',
-        'light-secundary':'#e4ebf1',
-        'light-shadow':'#b5bfc',
-        'light-font':'#6e7f8d'
+      boxShadow:{
+        'press-button': 'inset 2px 2px 6px #b5bfc6',
+        'dark-press-button': 'inset 2px 2px 6px #000000',
+        'button':'2px 2px 6px #b5bfc6',
+        'dark-button':'2px 2px 6px #000000',
+        'bar':'5px -5px 8px #b5bfc6',
+        'dark-bar':'5px -5px 8px #000000',
       },
-      dark:{
-        'dark-background':'#6e7f8d',
-        'dark-secundary':'#b5bfc',
-        'dark-shadow':'#e4ebf1',
-        'dark-font':'#eff2f9'
+      colors:{
+        light:{
+          'background':'#eff2f9',
+          'secundary':'#e4ebf1',
+          'shadow':'#b5bfc6',
+          'font':'#423F3E'
 
+        },
+        dark:{
+          'background':'#363636',
+          'secundary':'#a7a6a6',
+          'shadow':'#000000',
+          'font':'#eeeeee'  
+        }
       },
       fontFamily:{
         'roboto': ['Roboto', 'sans-serif'],
