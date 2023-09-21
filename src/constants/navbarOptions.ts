@@ -6,7 +6,12 @@
 
 export const options:optionsButtonType[]  = [
     {
-        name:'Lastest',
+        name:'search',
+        ico :'',
+        ref:''
+    },
+    {
+        name:'Home',
         ico :'',
         ref:'',        
     },
@@ -29,5 +34,5 @@ export const options:optionsButtonType[]  = [
         name:'Create',
         ico :'',
         ref:''
-    }
+    },
 ]

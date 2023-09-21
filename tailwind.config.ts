@@ -14,6 +14,9 @@ const config: Config = {
         'dark-press-button': 'inset 2px 2px 6px #000000',
         'button':'2px 2px 6px #b5bfc6',
         'dark-button':'2px 2px 6px #000000',
+        'current-button':'inset 1px 1px 3px #b5bfc6',
+        'dark-current-button':'inset 1px 1px 3px  #000000',
+
         'bar':'5px -5px 8px #b5bfc6',
         'dark-bar':'5px -5px 8px #000000',
       },
