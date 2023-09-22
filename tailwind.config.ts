@@ -14,11 +14,16 @@ const config: Config = {
         'dark-press-button': 'inset 2px 2px 6px #000000',
         'button':'2px 2px 6px #b5bfc6',
         'dark-button':'2px 2px 6px #000000',
+        
         'current-button':'inset 1px 1px 3px #b5bfc6',
         'dark-current-button':'inset 1px 1px 3px  #000000',
 
         'bar':'5px -5px 8px #b5bfc6',
         'dark-bar':'5px -5px 8px #000000',
+
+        'subMenu':'inset 1px 1px 1px #b5bfc6',
+        'dark-subMenu':'inset 1px 1px 1px  #000000'
+        
       },
       colors:{
         light:{
@@ -37,6 +42,9 @@ const config: Config = {
       },
       fontFamily:{
         'roboto': ['Roboto', 'sans-serif'],
+      },
+      fontSize:{
+        'xxs':'0.6rem'
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
