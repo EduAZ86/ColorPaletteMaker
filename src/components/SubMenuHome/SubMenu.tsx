@@ -2,6 +2,7 @@
 import React from "react"
 import { subMenuOptionType } from "@/types/menuOptions.type";
 import useCurrentPressButton from "@/hooks/useCurrentPressButton";
+import ThemeSwitcher from "../ThemeSwitcher";
 
 
 interface SubMenuProps {
@@ -14,7 +15,7 @@ const SubMenu:React.FC <SubMenuProps> = ({subMenu}) => {
 
     const handleClick = (id:string) => {
         selectButton(id)
-    } 
+    }
 
     return(
         <div className="
@@ -23,12 +24,20 @@ const SubMenu:React.FC <SubMenuProps> = ({subMenu}) => {
         ">
             {subMenu.map((item:subMenuOptionType,index:number)=>{
                 const id:string = item.id
-              
+                if (id === 'settings') {
+                    return(
+                        <div className={`
+                        text-light-font dark:text-dark-font text-center px-2 py-1 rounded-lg ${currentPress === id?'text-xxs shadow-subMenu dark:shadow-dark-subMenu':'text-xxs'}
+                        `}>
+                            <ThemeSwitcher/>
+                        </div>
+                    )
+                }
+                
                 return(
                     <button className={`
                      text-light-font dark:text-dark-font text-center px-2 py-1 rounded-lg ${currentPress === id?'text-xxs shadow-subMenu dark:shadow-dark-subMenu':'text-xxs'}
-                     `}
-                        
+                     `}                        
                         key={index}
                         onClick={() => handleClick(id)}
                     >

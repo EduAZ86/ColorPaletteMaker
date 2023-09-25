@@ -5,7 +5,7 @@ import SubMenu from "../SubMenuHome";
 
 interface ButtonNavigationProps {
     option:menuOptionsType
-    setCurrentPressButton:Dispatch<SetStateAction<string>>
+    setCurrentPressButton:(id: string) => void
     currentPressButton:string
   }
 

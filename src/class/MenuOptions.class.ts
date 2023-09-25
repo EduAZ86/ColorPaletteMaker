@@ -3,6 +3,7 @@ import React from 'react'
 interface subMenuOptionType {
     id:string;
     name:string;
+    
 }
 export class MenuOptions {
     id:string;
@@ -26,7 +27,7 @@ export class MenuOptions {
         const arrayResp:subMenuOptionType[] = []
         for (let i = 0; i < arrayOptions.length; i++) {
             arrayResp.push({
-                id:arrayOptions[i],
+                id:arrayOptions[i].toLocaleLowerCase(),
                 name:arrayOptions[i]
             })
             
