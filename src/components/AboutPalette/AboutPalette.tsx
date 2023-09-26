@@ -7,13 +7,15 @@ const AboutPalette:React.FC = () => {
     const palette = ['#CA3E47', '#451952', '#662549', '#AE445A', '#F39F5A'];
     return(
         <div className='
-            flex flex-row w-full py-1 px-1 bg-light-background rounded-xl justify-around
+            flex flex-row w-full py-1 px-1 bg-light-background rounded-xl justify-around items-center
             dark:bg-dark-background 
         '>
             <FavButton/>
-            <button className='text-sm'>
-                date
-            </button>
+            <span className='text-xs opacity-70 text-light-font
+                dark:text-dark-font
+            '>
+                8 mounth
+            </span>
             <DownloadPaletteButton
                 palette={palette}
             />
