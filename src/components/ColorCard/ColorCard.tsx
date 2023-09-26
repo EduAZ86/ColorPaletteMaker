@@ -1,56 +1,39 @@
 import React from "react";
-import styles from './ColorCard.module.css'
 import { CopyToClipboard } from "@/utils/copyToClipboard";
-import { ComplementaryColor, hexToRgb } from "@/utils/colorsCalculator";
 
 interface ColorCardProps {
-    color: string;
-    ident:string;
-  }
+    colorRGB:string;
+    colorHEXA:string;
+}
 
-  const ColorCard:React.FC <ColorCardProps> = ({color, ident}) => {
-
-    const colorRGB = hexToRgb(color)
-    const colorRGBComplementary = ComplementaryColor(colorRGB)
-    const borderTopLeftRadius = (ident === 'first'? '0.5rem':0 )
-    const borderBottomLeftRadius = (ident === 'first'? '0.5rem':0 )
-    const borderTopRightRadius =  (ident === 'fifth'? '0.5rem':0 )
-    const borderBottomRightRadius =  (ident === 'fifth'? '0.5rem':0 )
+const ColorCard:React.FC<ColorCardProps> = ({colorRGB, colorHEXA}) => {
+    
+   
 
     return(
-        <div 
-        style={
-            {
-                backgroundColor:color,
-                borderTopLeftRadius:borderTopLeftRadius,
-                borderBottomLeftRadius:borderBottomLeftRadius,
-                borderTopRightRadius:borderTopRightRadius,
-                borderBottomRightRadius:borderBottomRightRadius
-            }}
-        className={styles.color}>
-        <button
-            onClick={() => CopyToClipboard(color)}
-            style={{color:colorRGBComplementary}} 
-            className={styles.copyColor}
-            >
-                <span
-                    className={styles.copied}
-                    style={{backgroundColor:colorRGBComplementary, color:color}}
-                >copied</span>
-                {color}
-        </button>
-        <button
-            onClick={() => CopyToClipboard(`rgb(${colorRGB})`)}
-            style={{color:colorRGBComplementary}}  
-            className={styles.copyColor}
-            >
-                <span
-                    className={styles.copied}
-                    style={{backgroundColor:colorRGBComplementary, color:color}}
-                >copied</span>
-                {`rgb(${colorRGB})`}
-        </button>        
-    </div>
+        <div className={`
+            flex flex-col justify-center items-center group-hover:gap-2 cursor-pointer px-1 py-1
+            
+        `}>
+            <button className={`
+                text-4xs opacity-0 text-light-font
+                group-hover:opacity-90 duration-700 delay-100
+                dark:text-dark-font
+            
+            `}>{colorRGB}</button>
+            <span 
+                className={`
+                w-10 h-10 rounded-t-full rounded-b-full
+                group-hover:h-24 duration-700
+                `}
+                style={{background:colorHEXA}}
+                />
+            <button className={`
+                text-3xs opacity-0 text-light-font
+                group-hover:opacity-80 duration-700 delay-100
+                dark:text-dark-font
+                `}>{colorHEXA}</button>
+        </div>
     )
 }
 

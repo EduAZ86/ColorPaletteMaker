@@ -21,6 +21,9 @@ const config: Config = {
         'bar':'5px -5px 8px #b5bfc6',
         'dark-bar':'5px -5px 8px #000000',
 
+        'card':'5px 5px 8px #b5bfc6',
+        'dark-card':'5px 5px 8px #000000',
+
         'subMenu':'inset 1px 1px 1px #b5bfc6',
         'dark-subMenu':'inset 1px 1px 1px  #000000'
         
@@ -44,7 +47,9 @@ const config: Config = {
         'roboto': ['Roboto', 'sans-serif'],
       },
       fontSize:{
-        'xxs':'0.6rem'
+        'xxs':'0.6rem',
+        '3xs':'0.5rem',
+        '4xs':'0.4rem',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
