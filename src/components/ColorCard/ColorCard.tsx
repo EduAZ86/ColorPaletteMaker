@@ -15,21 +15,22 @@ const ColorCard:React.FC<ColorCardProps> = ({colorRGB, colorHEXA}) => {
 
     return(
         <div className={`
-            flex flex-col justify-center items-center group-hover:gap-2 cursor-pointer px-1 py-1
+            flex flex-col justify-center w-14 items-center group-hover:gap-2 px-1 py-1
             
         `}>
             <button 
                 onClick={() => handleCopy(colorRGB)}
                 className={`
-                    text-4xs opacity-0 text-light-font
-                    group-hover:opacity-90 duration-700 delay-100
-                    dark:text-dark-font            
+                    text-4xs opacity-0 text-light-font h-0
+                    group-hover:opacity-90 group-hover:h-fit duration-700 delay-100
+                    dark:text-dark-font
+                    cursor-pointer            
                 `}
             
             >{colorRGB}</button>
             <span 
                 className={`
-                w-10 h-10 rounded-t-full rounded-b-full
+                w-12 h-12 rounded-t-full rounded-b-full
                 group-hover:h-24 duration-700
                 `}
                 style={{background:colorHEXA}}
@@ -37,9 +38,10 @@ const ColorCard:React.FC<ColorCardProps> = ({colorRGB, colorHEXA}) => {
             <button 
                 onClick={() => handleCopy(colorHEXA)}
                 className={`
-                    text-3xs opacity-0 text-light-font
-                    group-hover:opacity-80 duration-700 delay-100
+                    text-3xs opacity-0 text-light-font h-0
+                    group-hover:opacity-80 group-hover:h-fit duration-700 delay-100
                     dark:text-dark-font
+                    cursor-pointer
                 `}
                 >{colorHEXA}</button>
         </div>
