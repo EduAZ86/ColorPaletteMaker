@@ -9,7 +9,7 @@ const PaletteColorCard:React.FC<{paletteColorProp:ColorPalleteType}> = ({palette
     return(
         <div
             className='
-                flex flex-col w-fit h-fit py-2 px-2 bg-light-background rounded-xl group shadow-card
+                flex flex-col w-fit h-fit pt-2 pb-1 px-2 bg-light-background rounded-xl group shadow-card
                 dark:bg-dark-background dark:shadow-dark-card
             '
         >

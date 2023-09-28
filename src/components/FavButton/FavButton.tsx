@@ -1,6 +1,8 @@
 'use client'
+
 import React, { useState } from 'react'
 import {BiHeart, BiSolidHeart} from 'react-icons/bi'
+
 
 const FavButton:React.FC = () => {
     const [press, setPress] = useState<boolean>(false)

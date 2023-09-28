@@ -1,10 +1,8 @@
+'use client'
 import { options } from "@/constants/navbarOptions"
 import React, { useState, useEffect } from "react"
 import ButtonNavigation from "../ButtonNavigation"
-import ThemeSwitcher from "../ThemeSwitcher"
 import useCurrentPressButton from "@/hooks/useCurrentPressButton"
-
-
 
 const NavBar:React.FC = () => {
  

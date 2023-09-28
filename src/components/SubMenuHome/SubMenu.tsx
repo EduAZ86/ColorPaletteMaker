@@ -5,6 +5,7 @@ import useCurrentPressButton from "@/hooks/useCurrentPressButton";
 import ThemeSwitcher from "../ThemeSwitcher";
 
 
+
 interface SubMenuProps {
     subMenu: subMenuOptionType[];
   }
@@ -29,7 +30,9 @@ const SubMenu:React.FC <SubMenuProps> = ({subMenu}) => {
                         <div className={`
                         text-light-font dark:text-dark-font text-center px-2 py-1 rounded-lg ${currentPress === id?'text-xxs shadow-subMenu dark:shadow-dark-subMenu':'text-xxs'}
                         `}>
-                            <ThemeSwitcher/>
+                            <ThemeSwitcher 
+                                key={'settings'}
+                            />
                         </div>
                     )
                 }

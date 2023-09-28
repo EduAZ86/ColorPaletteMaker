@@ -11,13 +11,13 @@ const createIcon = <BiBookAdd className='h-12 text-xl md:text-base'/>
 const searchIcon = <BiSearch className='h-12 text-xl md:text-base'/>
 const settingsIcon = <BiCog className='h-12 text-xl md:text-base'/>
 
-const Home = new MenuOptions('Home',"",homeIcon)
+const Home = new MenuOptions('Home','/',homeIcon)
 Home.setSubMenu(['new','popular','random'])
 
 
-const Create = new MenuOptions('Create','',createIcon)
+const Create = new MenuOptions('Create','/create',createIcon)
 
-const Colection = new MenuOptions('Colection','',colectionIcon)
+const Colection = new MenuOptions('Colection','/colection',colectionIcon)
 
 const Search = new MenuOptions('Search','',searchIcon)
 
@@ -26,8 +26,8 @@ Settings.setSubMenu(['settings'])
 
 export const options :menuOptionsType[] = [
 
-    Search,
     Home,
+    Search,
     Create,
     Colection,
     Settings
