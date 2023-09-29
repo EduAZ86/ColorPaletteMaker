@@ -1,33 +1,38 @@
 'use client'
-import { ColorPalleteType, arrayPalettes } from '@/types/paletteColor.type'
+
 import { create } from 'zustand'
 
 interface favoritesState {
-    palette_favs:arrayPalettes
-    add_fav:(palette:ColorPalleteType) => void
-    remove_fav:(palette:ColorPalleteType) => void
-}
-
-function getFromLocalStorage(key:string, defaultValue:arrayPalettes) {
-    const storedValue = localStorage.getItem(key);
-    return storedValue ? JSON.parse(storedValue) : defaultValue;
+    palette_favs:string[]
+    add_fav:(idPalette:string) => void
+    remove_fav:(idPalette:string) => void
+    loadStorage:() => void
 }
 
 
 export const useFavoritesStore = create<favoritesState>((set) => ({
 
-    palette_favs: getFromLocalStorage('palette_favs', []),
+    palette_favs:[],
+    loadStorage: () => {
+        if (typeof window !== 'undefined') {
+            const favs_palettes_storage = localStorage.getItem('palettes_favs')
+            if (favs_palettes_storage) {
+                set({palette_favs: JSON.parse(favs_palettes_storage) })
+            }
+        }
+    },
 
-    add_fav: (palette) => set((state) => {
-        const current_palette_favs = [...state.palette_favs, palette]
-        localStorage.setItem('palette_favs',JSON.stringify(current_palette_favs))
+    add_fav: (idPalette) => set((state) => {
+        const current_palette_favs = [...state.palette_favs, idPalette]
+        localStorage.setItem('palettes_favs',JSON.stringify(current_palette_favs))
         return {palette_favs: current_palette_favs}
     }    
     ),
-    remove_fav: (palette) => set(state => {
-        const current_palette_favs = state.palette_favs.filter((item)=> item.idColors !== palette.idColors)
-        localStorage.setItem('palette_favs',JSON.stringify(current_palette_favs))
+    remove_fav: (idPalette) => set(state => {
+        const current_palette_favs = state.palette_favs.filter((item)=> item !== idPalette)
+        localStorage.setItem('palettes_favs',JSON.stringify(current_palette_favs))
         return {palette_favs: current_palette_favs}      
     })
 
 }))
+useFavoritesStore.getState().loadStorage()

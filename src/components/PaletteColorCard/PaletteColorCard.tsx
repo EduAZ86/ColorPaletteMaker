@@ -5,15 +5,17 @@ import AboutPalette from '../AboutPalette'
 import { ColorPalleteType } from '@/types/paletteColor.type'
 
 const PaletteColorCard:React.FC<{paletteColorProp:ColorPalleteType}> = ({paletteColorProp}) => {
-
+    
+    
     return(
         <div
             className='
-                flex flex-col w-fit h-fit pt-2 pb-1 px-2 bg-light-background rounded-xl group shadow-card
+                flex flex-col w-fit h-fit pt-2 pb-1 px-2 bg-light-background rounded-xl shadow-card
                 dark:bg-dark-background dark:shadow-dark-card
             '
         >
             <PaletteColor
+                key={paletteColorProp.idColors}
                 first_color={paletteColorProp.first_color}
                 second_color={paletteColorProp.second_color}    
                 third_color={paletteColorProp.third_color}    
@@ -25,7 +27,10 @@ const PaletteColorCard:React.FC<{paletteColorProp:ColorPalleteType}> = ({palette
                 fourth_color_rgb={paletteColorProp.fourth_color_rgb}
                 fifth_color_rgb={paletteColorProp.fifth_color_rgb}            
             />
-            <AboutPalette/>
+            <AboutPalette
+                key={`${paletteColorProp.idColors}AboutPalette`}
+                palette={paletteColorProp}
+            />
         </div>
     )
 }
