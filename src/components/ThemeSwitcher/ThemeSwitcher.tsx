@@ -26,7 +26,7 @@ const ThemeSwitcher:React.FC = () => {
     }
 
     return(
-        <div className={`flex flex-row w-8 ${theme === 'light'? 'justify-end' : 'justify-start'} justify-end items-center`}>     
+        <div className={`flex flex-row w-8 ${theme === 'light'? 'translate-x-5' : 'translate-x-0'} items-center`}>     
             <button 
                 className="w-fit text-center"
             onClick={() => handleTheme()}>{emogi}</button>

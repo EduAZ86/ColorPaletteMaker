@@ -1,15 +1,13 @@
 'use client'
-import { arrayPalettes } from '@/types/paletteColor.type'
-import React from 'react'
-import PaletteColorCard from '../PaletteColorCard'
+import React from 'react';
+import { ICardMapperProps } from './types';
+import PaletteColorCard from '../PaletteColorCard';
+import { CardMapperContainer } from './styles.tw';
 
-
-
-const CardMapper: React.FC<{ arrayColorPalettes: arrayPalettes }> = ({ arrayColorPalettes }) => {
+export const CardMapper: React.FC<ICardMapperProps> = ({ arrayColorPalettes }) => {
 
     return(
-        <div
-            className='flex flex-row flex-wrap gap-4 justify-center items-center'
+        <CardMapperContainer            
         >
             {arrayColorPalettes.map(( item ) => {
                 return(
@@ -19,8 +17,6 @@ const CardMapper: React.FC<{ arrayColorPalettes: arrayPalettes }> = ({ arrayColo
                     />
                 )
             })}
-        </div>
+        </CardMapperContainer>
     )
 }
-
-export default CardMapper

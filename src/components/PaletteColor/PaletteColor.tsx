@@ -1,7 +1,6 @@
 'use client'
 import React from 'react'
 import ColorCard from '../ColorCard'
-import { hexToRgb } from '@/utils/colorsCalculator'
 
 interface PaletteColorProps {
     first_color:string;

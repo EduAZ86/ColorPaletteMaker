@@ -1,1 +1,1 @@
-export {default} from './CardMapper'
+export { CardMapper } from './CardMapper';

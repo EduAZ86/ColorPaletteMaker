@@ -36,6 +36,7 @@ export class ColorPallete {
         this.third_color_rgb = this.hexToRgb(this.third_color);
         this.fourth_color_rgb = this.hexToRgb(this.fourth_color);
         this.fifth_color_rgb = this.hexToRgb(this.fifth_color);
+        
         this.idColors = this.idGenerator(this.first_color, this.second_color, this.third_color, this.fourth_color, this.fifth_color )
         this.create_date_ms = Date.now()
         this.create_date = this.stringCreateData(this.create_date_ms)

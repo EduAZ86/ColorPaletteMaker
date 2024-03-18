@@ -18,5 +18,4 @@ export const useAllPalettesStore = create<AllPalettesStore>((set) => ({
     all_Palettes:[...state.all_Palettes, palette]
  }))
 
-
 }))

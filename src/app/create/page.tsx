@@ -1,4 +1,5 @@
 "use client"
+import CreatePaletteCard from "@/components/CreatePaletteCard";
 import React from "react";
 
 const Create:React.FC = () => {
@@ -8,8 +9,7 @@ const Create:React.FC = () => {
         flex w-full h-full flex-col justify-center items-center pl-0 pb-28
         md:pb-0 md:pl-5 md:pr-4
         ">
-            <span className="text-5xl text-center text-red-400"
-                >Este es el componte Create</span>
+            <CreatePaletteCard/>
         </div>
     )
 }

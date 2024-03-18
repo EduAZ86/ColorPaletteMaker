@@ -18,8 +18,8 @@ const config: Config = {
         'current-button':'inset 1px 1px 3px #b5bfc6',
         'dark-current-button':'inset 1px 1px 3px  #000000',
 
-        'bar':'5px -5px 8px #b5bfc6',
-        'dark-bar':'5px -5px 8px #000000',
+        'bar':'1px 0px 14px #b5bfc6',
+        'dark-bar':'1px 0px 14px #000000',
 
         'card':'5px 5px 8px #b5bfc6',
         'dark-card':'5px 5px 8px #000000',

@@ -1,15 +1,11 @@
 'use client'
-import { useFavoritesStore } from '@/store/favoritesStore'
-import React, { useEffect, useState } from 'react'
-import {BiHeart, BiSolidHeart} from 'react-icons/bi'
+import { useFavoritesStore } from '@/store/favoritesStore';
+import React, { useEffect, useState } from 'react';
+import { BiHeart, BiSolidHeart } from 'react-icons/bi';
+import { IFavButtonProps } from './types';
+import { ButtonComponent } from './styles.tw';
 
-interface FavButtonProps {
-    idPalette:string
-}
-
-
-
-const FavButton:React.FC<FavButtonProps> = ({idPalette}) => {
+const FavButton: React.FC<IFavButtonProps> = ({ idPalette }) => {
     const [press, setPress] = useState<boolean>(false)
     const [isFav, setIsFav] = useState<boolean>(false)
 
@@ -19,9 +15,9 @@ const FavButton:React.FC<FavButtonProps> = ({idPalette}) => {
 
     useEffect(() => {
         if (allFavs.includes(idPalette)) {
-            setIsFav(true) 
+            setIsFav(true)
         } else {
-            setIsFav(false)   
+            setIsFav(false)
         }
     }, [press])
 
@@ -34,22 +30,20 @@ const FavButton:React.FC<FavButtonProps> = ({idPalette}) => {
         }
     }
 
-    return(
-        <button 
-            className={`
-                flex flex-row w-fit py-2 px-2 rounded-md gap-2 ${isFav && 'shadow-current-button dark:shadow-dark-current-button'}
-            `}
-            onClick={() => handlePress()}
+    return (
+        <ButtonComponent
+            handleClick={handlePress}
+            isFav={isFav}
         >
-            {isFav? <BiSolidHeart/> : <BiHeart/>}
+            {isFav ? <BiSolidHeart /> : <BiHeart />}
             <span className='
                 text-xs text-light-font
                 dark:text-dark-font
-            '                
+            '
             >
                 432
             </span>
-        </button>
+        </ButtonComponent>
     )
 }
 
