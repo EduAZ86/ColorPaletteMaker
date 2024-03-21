@@ -1,17 +1,35 @@
-"use client"
-import CreatePaletteCard from "@/components/CreatePaletteCard";
+'use client'
 import React from "react";
+import { CreateContainer } from "./styles.d";
+import { CreatePaletteCard } from "@/components/CreatePaletteCard";
+import { Typography } from "@/components/Typography";
+import { PaletteColorForm } from "./PaletteColorForm";
+import { useForm } from "react-hook-form";
+import { SubmitButtonPalette } from "./SubmitButtonPalette";
 
-const Create:React.FC = () => {
+const Create: React.FC = () => {
+    const { handleSubmit, register } = useForm()
 
-    return(
-        <div className="
-        flex w-full h-full flex-col justify-center items-center pl-0 pb-28
-        md:pb-0 md:pl-5 md:pr-4
-        ">
-            <CreatePaletteCard/>
-        </div>
+    const onSubmit = handleSubmit((data) => {
+
+        console.log(data);
+        
+    })
+
+    return (
+        <CreateContainer>
+            <Typography variant="caption">
+                Crea tu paleta de colores
+            </Typography>
+            <PaletteColorForm
+                handleSubmit={onSubmit}
+            >
+                <CreatePaletteCard
+                    register={register}
+                />
+                <SubmitButtonPalette/>
+            </PaletteColorForm>
+        </CreateContainer>
     )
 }
-
 export default Create

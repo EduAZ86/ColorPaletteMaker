@@ -1,1 +1,1 @@
-export {default} from './ColorCard'
+export { ColorCard } from './ColorCard';

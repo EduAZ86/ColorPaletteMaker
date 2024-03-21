@@ -1,1 +1,1 @@
-export {default} from './CreatePaletteCard'
+export { CreatePaletteCard } from './CreatePaletteCard';

@@ -1,12 +1,9 @@
 "use client"
-import { menuOptionsType } from "@/types/menuOptions.type";
 import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from "react";
-import SubMenu from "../SubMenuHome";
 import { IButtonNavigationProps } from "./types";
 import { ButtonNavigationComponent, ButtonNavigationContainer } from "./styles.tw";
-
-
+import { SubMenu } from '../SubMenuHome';
 
 export const ButtonNavigation: React.FC<IButtonNavigationProps> = ({ option, currentPressButton, setCurrentPressButton }) => {
 
@@ -18,15 +15,11 @@ export const ButtonNavigation: React.FC<IButtonNavigationProps> = ({ option, cur
         setCurrentPress(option.name === currentPressButton)
 
     }, [currentPressButton])
-
-
-
     const handleClick = (id: string) => {
         setCurrentPressButton(id)
         router.push(option.ref)
 
     }
-
     return (
         <ButtonNavigationContainer>
             <ButtonNavigationComponent

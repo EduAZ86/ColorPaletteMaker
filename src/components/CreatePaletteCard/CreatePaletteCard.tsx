@@ -1,45 +1,28 @@
 'use client'
-import React from 'react'
+import { FC } from 'react'
+import { CreatePaletteContainer, InputsContainerProps } from './styles.tw'
+import { InputColorPalette } from './ImputColorPalette'
+import { ICreatePaletteCardProps } from './types'
 
-const CreatePaletteCard:React.FC = () => {
-    const arrayColors = [1,2,3,4,5]
-    return(
-        <div
-            className='
-                flex flex-col w-fit h-fit py-2 px-2 bg-light-background rounded-xl shadow-card
-                dark:bg-dark-background dark:shadow-dark-card
-                '
-        >
-            <div 
-                className='
-                    flex flex-row w-fit bg-light-background rounded-xl 
-                    dark:bg-dark-background 
-                    '
-                >
-                    {arrayColors.map((item, index) => {
-                        return(
-                            <div className={`
-                                flex flex-col justify-center items-center gap-2 px-1 py-1                            
-                                `}
-
-                                key={index}
-                            >
-                                <span
-                                    className={`
-                                        w-12 h-32 rounded-t-full rounded-b-full                                        
-                                        `}
-                                    style={{background:'#FFFFFF'}}
-                                />
-
-                            
-                            </div>
+export const CreatePaletteCard: FC<ICreatePaletteCardProps> = ({ register }) => {
+    const arrayColors: string[] = ['color-1', 'color-2', 'color-3', 'color-4', 'color-5']
+    return (
+        <CreatePaletteContainer>
+            <InputsContainerProps>
+                <>
+                    {arrayColors.map((item: string) => {
+                        return (
+                            <InputColorPalette
+                                key={item}
+                                id={`${item}-of-the-palette`}
+                                name={item}
+                                register={register}
+                            />
                         )
                     })}
+                </>
+            </InputsContainerProps>
+        </CreatePaletteContainer>
 
-            </div>
-
-        </div>
     )
 }
-
-export default CreatePaletteCard

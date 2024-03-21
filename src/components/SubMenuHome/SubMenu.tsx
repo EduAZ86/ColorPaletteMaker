@@ -3,44 +3,39 @@ import React from "react"
 import { subMenuOptionType } from "@/types/menuOptions.type";
 import useCurrentPressButton from "@/hooks/useCurrentPressButton";
 import ThemeSwitcher from "../ThemeSwitcher";
+import { ISubMenuProps } from "./types";
 
+export const SubMenu: React.FC<ISubMenuProps> = ({ subMenu }) => {
 
+    const { currentPress, selectButton } = useCurrentPressButton(subMenu)
 
-interface SubMenuProps {
-    subMenu: subMenuOptionType[];
-  }
-
-const SubMenu:React.FC <SubMenuProps> = ({subMenu}) => {
-
-    const {currentPress,selectButton} = useCurrentPressButton(subMenu)
-
-    const handleClick = (id:string) => {
+    const handleClick = (id: string) => {
         selectButton(id)
     }
 
-    return(
+    return (
         <div className="
             flex flex-row absolute bottom-14 w-fit left-[-85%] h-8 items-center justify-center gap-1 bg-light-background dark:bg-dark-background rounded-lg px-1
             md:relative md:bottom-0 md:left-0
         ">
-            {subMenu.map((item:subMenuOptionType,index:number)=>{
-                const id:string = item.id
+            {subMenu.map((item: subMenuOptionType, index: number) => {
+                const id: string = item.id
                 if (id === 'settings') {
-                    return(
+                    return (
                         <div className={`
-                        text-light-font dark:text-dark-font text-center px-2 py-1 rounded-lg ${currentPress === id?'text-xxs shadow-subMenu dark:shadow-dark-subMenu':'text-xxs'}
+                        text-light-font dark:text-dark-font text-center px-2 py-1 rounded-lg ${currentPress === id ? 'text-xxs shadow-subMenu dark:shadow-dark-subMenu' : 'text-xxs'}
                         `}>
-                            <ThemeSwitcher 
+                            <ThemeSwitcher
                                 key={'settings'}
                             />
                         </div>
                     )
                 }
-                
-                return(
+
+                return (
                     <button className={`
-                     text-light-font dark:text-dark-font text-center px-2 py-1 rounded-lg ${currentPress === id?'text-xxs shadow-subMenu dark:shadow-dark-subMenu':'text-xxs'}
-                     `}                        
+                     text-light-font dark:text-dark-font text-center px-2 py-1 rounded-lg ${currentPress === id ? 'text-xxs shadow-subMenu dark:shadow-dark-subMenu' : 'text-xxs'}
+                     `}
                         key={index}
                         onClick={() => handleClick(id)}
                     >
@@ -51,5 +46,3 @@ const SubMenu:React.FC <SubMenuProps> = ({subMenu}) => {
         </div>
     )
 }
-
-export default SubMenu

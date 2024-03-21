@@ -6,8 +6,7 @@ import { ColorCardContainer } from "./styles.tw";
 import { ButtonCopy } from "./ButtonCopy";
 import { ColorTag } from "./ColorTag";
 
-
-const ColorCard: React.FC<IColorCardProps> = ({ colorRGB, colorHEXA }) => {
+export const ColorCard: React.FC<IColorCardProps> = ({ colorRGB, colorHEXA }) => {
 
     const handleCopy = (color: string) => {
         CopyToClipboard(color)
@@ -31,5 +30,3 @@ const ColorCard: React.FC<IColorCardProps> = ({ colorRGB, colorHEXA }) => {
         </ColorCardContainer>
     )
 }
-
-export default ColorCard
