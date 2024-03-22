@@ -1,13 +1,13 @@
 'use client'
-import { FC, useState } from "react";
+import { FC } from "react";
 import { IInputColorPaletteProps } from "./types";
 
-export const InputColorPalette: FC<IInputColorPaletteProps> = ({ register, id, name }) => {
-    const [inputValue, setInputValue] = useState<string>('')
+export const InputColorPalette: FC<IInputColorPaletteProps> = ({ register, id, name, watch }) => {
+    const watched = `${!watch(name) || watch(name) === '#000000' ? '' : watch(name)}`
     return (
         <div
             className={`
-                w-16 h-32 inline-block relative rounded-full overflow-hidden
+                w-20 h-32 inline-block relative rounded-full overflow-hidden
             `}
         >
             <input
@@ -16,23 +16,26 @@ export const InputColorPalette: FC<IInputColorPaletteProps> = ({ register, id, n
                 -top-2 -left-1
                 cursor-pointer
                 absolute
-                 w-20 h-36 appearance-none
+                 w-24 h-36 appearance-none
                 rounded-t-full rounded-b-full
                 outline-none            
                 `}
-                onChange={(e) => setInputValue(e.target.value)}
                 id={id}
                 name={name}
                 type="color"
-                {...register}
+                {...register(name)}
             />
             <span
-            className={`
+                className={`
                 bock absolute
+                w-full
                 top-14 left-0
                 text-sm
+                text-center
+                text-light-font
+                dark:text-dark-font
             `}
-            >{inputValue.toUpperCase()}</span>
+            >{watched.toUpperCase()}</span>
         </div>
 
 

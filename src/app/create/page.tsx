@@ -8,12 +8,13 @@ import { useForm } from "react-hook-form";
 import { SubmitButtonPalette } from "./SubmitButtonPalette";
 
 const Create: React.FC = () => {
-    const { handleSubmit, register } = useForm()
+    const { handleSubmit, register, reset, watch } = useForm()
 
     const onSubmit = handleSubmit((data) => {
 
         console.log(data);
-        
+        reset()
+
     })
 
     return (
@@ -26,8 +27,9 @@ const Create: React.FC = () => {
             >
                 <CreatePaletteCard
                     register={register}
+                    watch={watch}
                 />
-                <SubmitButtonPalette/>
+                <SubmitButtonPalette />
             </PaletteColorForm>
         </CreateContainer>
     )
