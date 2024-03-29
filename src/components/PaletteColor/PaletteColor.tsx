@@ -2,6 +2,7 @@
 import React from 'react'
 import { ColorCard } from '../ColorCard';
 import { IPaletteColorProps } from './types';
+import { PaleteColorContainer } from './styles.tw';
 
 export const PaletteColor: React.FC<IPaletteColorProps> = ({
     first_color,
@@ -17,11 +18,7 @@ export const PaletteColor: React.FC<IPaletteColorProps> = ({
 }) => {
 
     return (
-        <div className='
-            flex flex-row w-fit bg-light-background rounded-xl group 
-            dark:bg-dark-background 
-        '
-        >
+        <PaleteColorContainer>
             <ColorCard
                 key={first_color}
                 colorHEXA={first_color}
@@ -47,6 +44,6 @@ export const PaletteColor: React.FC<IPaletteColorProps> = ({
                 colorHEXA={fifth_color}
                 colorRGB={fifth_color_rgb}
             />
-        </div>
+        </PaleteColorContainer>
     )
 }

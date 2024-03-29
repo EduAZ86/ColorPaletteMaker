@@ -19,11 +19,21 @@ export const ButtonNavigationComponent: FC<IButtonNavigationComponentProps> = ({
     return (
         <button
             className={`
-            flex flex-col relative h-14 w-14 justify-center items-center px-2 pb-2 pt-0 gap-2 text-light-font bg-transparent rounded-lg cursor-pointer 
+            flex 
+            flex-col relative
+            h-14 w-14
+            justify-center items-center 
+            px-2 pb-2 pt-0 gap-2 
+            text-light-font bg-transparent 
+            rounded-lg 
+            cursor-pointer 
             ${currentPress ? 'shadow-press-button dark:shadow-dark-current-button' : 'shadow-button dark:shadow-dark-button'}  
             dark:text-dark-font 
             active:shadow-press-button active:dark:shadow-dark-press-button                    
-            md:flex-row md:justify-start md:h-9 md:w-40 md:font-roboto md:text-xs md:items-center md:pb-2 md:pt-2
+            md:flex-row md:justify-start 
+            md:h-9 md:w-40 
+            md:pb-2 md:pt-2
+            md:font-roboto md:text-xs md:items-center 
             `}
             onClick={handlerClick}
         >

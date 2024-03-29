@@ -22,19 +22,22 @@ export const SubMenu: React.FC<ISubMenuProps> = ({ subMenu }) => {
                 const id: string = item.id
                 if (id === 'settings') {
                     return (
-                        <div className={`
-                        text-light-font dark:text-dark-font text-center px-2 py-1 rounded-lg ${currentPress === id ? 'text-xxs shadow-subMenu dark:shadow-dark-subMenu' : 'text-xxs'}
-                        `}>
+                        <div
+                            className={`
+                            text-light-font dark:text-dark-font text-center px-2 py-1 rounded-lg ${currentPress === id ? 'text-xxs shadow-subMenu dark:shadow-dark-subMenu' : 'text-xxs'}
+                        `}
+                            key={index}
+                        >
                             <ThemeSwitcher
                                 key={'settings'}
                             />
                         </div>
                     )
                 }
-
                 return (
-                    <button className={`
-                     text-light-font dark:text-dark-font text-center px-2 py-1 rounded-lg ${currentPress === id ? 'text-xxs shadow-subMenu dark:shadow-dark-subMenu' : 'text-xxs'}
+                    <button
+                        className={`
+                        text-light-font dark:text-dark-font text-center px-2 py-1 rounded-lg ${currentPress === id ? 'text-xxs shadow-subMenu dark:shadow-dark-subMenu' : 'text-xxs'}
                      `}
                         key={index}
                         onClick={() => handleClick(id)}

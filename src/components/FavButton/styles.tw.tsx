@@ -5,7 +5,7 @@ export const ButtonComponent: FC<IButtonComponentProps> = ({ children, handleCli
     return (
         <button
             className={`
-            flex flex-row w-fit py-2 px-2 rounded-md gap-2 ${isFav && 'shadow-current-button dark:shadow-dark-current-button'}
+            flex flex-row w-fit py-2  rounded-md gap-2 ${isFav && 'shadow-current-button dark:shadow-dark-current-button'}
             `}
             onClick={handleClick}
         >

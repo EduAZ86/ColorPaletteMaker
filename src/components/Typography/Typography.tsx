@@ -1,7 +1,7 @@
 'use client'
 import { FC } from "react";
 import { ITypographyProps, TTypographyVariant } from "./types";
-import { Caption, TextError, MainTitle, Paragraph, Title, TextButton, Label, SubTitle } from "./styles.tw";
+import { TextCodeColor, TextError, MainTitle, Paragraph, Title, TextButton, Label, SubTitle } from "./styles.tw";
 
 const TypographySchema: TTypographyVariant = {
     mainTitle: (props: ITypographyProps) => (
@@ -16,8 +16,8 @@ const TypographySchema: TTypographyVariant = {
     cardTitle: (props: ITypographyProps) => (
         <Title {...props}>{props.children}</Title>
     ),
-    caption: (props: ITypographyProps) => (
-        <Caption {...props}>{props.children}</Caption>
+    textCodeColor: (props: ITypographyProps) => (
+        <TextCodeColor {...props}>{props.children}</TextCodeColor>
     ),
     paragraph: (props: ITypographyProps) => (
         <Paragraph {...props}>{props.children}</Paragraph>

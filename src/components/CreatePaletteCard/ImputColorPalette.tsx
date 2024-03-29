@@ -7,7 +7,9 @@ export const InputColorPalette: FC<IInputColorPaletteProps> = ({ register, id, n
     return (
         <div
             className={`
-                w-20 h-32 inline-block relative rounded-full overflow-hidden
+                md:w-20 md:h-32
+                w-14 h-20 
+                inline-block relative rounded-full overflow-hidden
             `}
         >
             <input
@@ -29,8 +31,9 @@ export const InputColorPalette: FC<IInputColorPaletteProps> = ({ register, id, n
                 className={`
                 bock absolute
                 w-full
-                top-14 left-0
-                text-sm
+                md:top-14 md:left-0
+                top-8
+                md:text-sm text-3xs
                 text-center
                 text-light-font
                 dark:text-dark-font

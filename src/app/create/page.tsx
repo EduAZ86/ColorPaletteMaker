@@ -6,6 +6,7 @@ import { Typography } from "@/components/Typography";
 import { PaletteColorForm } from "./PaletteColorForm";
 import { useForm } from "react-hook-form";
 import { SubmitButtonPalette } from "./SubmitButtonPalette";
+import { SearchBar } from "@/components/SearchBar";
 
 const Create: React.FC = () => {
     const { handleSubmit, register, reset, watch } = useForm()
@@ -19,7 +20,7 @@ const Create: React.FC = () => {
 
     return (
         <CreateContainer>
-            <Typography variant="caption">
+            <Typography variant="subTitle">
                 Crea tu paleta de colores
             </Typography>
             <PaletteColorForm
@@ -30,6 +31,7 @@ const Create: React.FC = () => {
                     watch={watch}
                 />
                 <SubmitButtonPalette />
+                <SearchBar />
             </PaletteColorForm>
         </CreateContainer>
     )

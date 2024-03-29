@@ -1,1 +1,0 @@
-export { SearchTags } from './SearchTags';

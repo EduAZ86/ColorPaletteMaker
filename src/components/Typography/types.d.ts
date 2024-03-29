@@ -14,7 +14,7 @@ export type TTypographyVariant = {
     title: FC<ITypographyProps>;
     subTitle: FC<ITypographyProps>;
     cardTitle: FC<ITypographyProps>;
-    caption: FC<ITypographyProps>;
+    textCodeColor: FC<ITypographyProps>;
     paragraph: FC<ITypographyProps>;
     error: FC<ITypographyProps>;
     textButton: FC<ITypographyProps>;

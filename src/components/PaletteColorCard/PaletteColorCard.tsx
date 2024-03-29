@@ -1,8 +1,7 @@
 import React from 'react'
 import AboutPalette from '../AboutPalette'
 import { PaletteColor } from '../PaletteColor'
-import { ColorPalleteType } from '@/types/paletteColor.type'
-import { PaletteColorCardContainer } from '../PaletteColor/styles.tw'
+import { PaletteColorCardContainer } from './styles.tw'
 import { IPaletteColorCardProps } from './types'
 
 export const PaletteColorCard: React.FC<IPaletteColorCardProps> = ({ paletteColorProp }) => {
