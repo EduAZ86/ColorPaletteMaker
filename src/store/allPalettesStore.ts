@@ -1,6 +1,6 @@
 "use client"
 import { create } from "zustand"
-import { ColorPalleteType, arrayPalettes } from '@/types/paletteColor.type'
+import { ColorPalleteType, arrayPalettes } from '@/types/data'
 
 interface AllPalettesStore {
     all_Palettes: arrayPalettes

@@ -1,4 +1,4 @@
-import { ColorPalleteType } from "@/types/paletteColor.type";
+import { ColorPalleteType } from "@/types/data";
 
 export interface IAboutPalettetProps {
     palette: ColorPalleteType;

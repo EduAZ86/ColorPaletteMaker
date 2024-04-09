@@ -1,6 +1,6 @@
 'use client'
 import { ColorPallete } from "@/class/paletteColors.class";
-import { ColorPalleteType } from "@/types/paletteColor.type";
+import { ColorPalleteType } from "@/types/data";
 
 const arrayPaletteTest = [
     {

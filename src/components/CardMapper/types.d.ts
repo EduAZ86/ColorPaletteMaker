@@ -1,4 +1,4 @@
-import { arrayPalettes } from "@/types/paletteColor.type";
+import { arrayPalettes } from "@/types/data";
 import { ReactNode } from "react";
 
 export interface ICardMapperProps {

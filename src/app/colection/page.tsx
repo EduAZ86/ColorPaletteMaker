@@ -2,7 +2,7 @@
 import { CardMapper } from '@/components/CardMapper'
 import { arrayPalettesTEST } from '@/constants/testPalettes'
 import { useFavoritesStore } from '@/store/favoritesStore'
-import { ColorPalleteType } from '@/types/paletteColor.type'
+import { ColorPalleteType } from '@/types/data'
 
 import React from 'react'
 
