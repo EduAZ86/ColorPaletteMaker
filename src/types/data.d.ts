@@ -35,7 +35,7 @@ export interface IColorsRGB {
 export interface ITag {
     name: string;
     color: string;
-    id: string;
+    _id?: string;
 }
 
 export interface IColorPallete {

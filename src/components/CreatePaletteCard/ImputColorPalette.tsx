@@ -25,7 +25,8 @@ export const InputColorPalette: FC<IInputColorPaletteProps> = ({ register, id, n
                 id={id}
                 name={name}
                 type="color"
-                {...register(name)}
+                {...register(name, { required: true })}
+                
             />
             <span
                 className={`

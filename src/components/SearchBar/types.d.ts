@@ -1,8 +1,8 @@
 import { ITagColor } from "@/class/TagColor";
+import { ITag } from "@/types/data";
 import { ReactNode } from "react";
 
 export interface ISearchBarProps {
-
 }
 
 export interface ISearchBarContainerProps {
@@ -14,11 +14,9 @@ export interface IInputSearchBarProps {
 }
 
 export interface IResultsSearchProps {
-    tagsResults: ITagColor[];
-    handleClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    tagsResults: ITag[];
 }
 
 export interface ITagProps {
-    tagData: ITagColor;
-    handleClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    tagData: ITag;
 }

@@ -1,8 +1,14 @@
 import { FC } from "react"
 import { ITagProps } from "./types"
 import { Typography } from "../Typography"
+import { useDataPaletteStore } from "@/services/dataPaletteStore"
 
-export const Tag: FC<ITagProps> = ({ tagData, handleClick }) => {
+export const Tag: FC<ITagProps> = ({ tagData }) => {
+    const { addTags } = useDataPaletteStore();
+
+    const handleClick = () => {
+        addTags(tagData)
+    }
     return (
         <button
             className={`
@@ -27,7 +33,7 @@ export const Tag: FC<ITagProps> = ({ tagData, handleClick }) => {
             <Typography
                 variant="label"
             >
-                {tagData.textTag}
+                {tagData.name}
             </Typography>
         </button>
     )

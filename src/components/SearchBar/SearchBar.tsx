@@ -12,16 +12,13 @@ const exampleTagArrray = [exampleTags1, exampleTags2]
 
 export const SearchBar: FC<ISearchBarProps> = ({ }) => {
     const handleChange = () => { }
-    const handleClickTag = () => { }
+    
     return (
         <SearchBarContanier>
             <InputSearchBar
                 onChange={handleChange}
             />
-            <ResultsSearch
-                tagsResults={exampleTagArrray}
-                handleClick={handleClickTag}
-            />
+            <ResultsSearch />
         </SearchBarContanier>
     )
 }

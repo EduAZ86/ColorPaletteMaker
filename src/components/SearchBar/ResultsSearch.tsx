@@ -2,7 +2,7 @@ import { FC } from "react";
 import { IResultsSearchProps } from "./types";
 import { Tag } from "./Tag";
 
-export const ResultsSearch: FC<IResultsSearchProps> = ({ tagsResults, handleClick }) => {
+export const ResultsSearch: FC<IResultsSearchProps> = ({ tagsResults }) => {
 
     return (
         <div
@@ -13,12 +13,11 @@ export const ResultsSearch: FC<IResultsSearchProps> = ({ tagsResults, handleClic
              gap-2             
             `}
         >
-            {tagsResults.map((item, index) => {
+            {tagsResults?.map((item, index) => {
                 return (
                     <Tag
                         key={index}
                         tagData={item}
-                        handleClick={handleClick}
                     />
                 )
             })}
