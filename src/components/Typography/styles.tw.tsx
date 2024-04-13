@@ -122,6 +122,7 @@ export const Label: FC<ITypographyProps> = ({ align = 'text-left', bold = false,
         md:${align} ${bold ? 'font-bold' : 'font-light'} 
         text-sm font-roboto
         text-light-font dark:text-dark-font
+        cursor-pointer
         `}
         >
             {children}

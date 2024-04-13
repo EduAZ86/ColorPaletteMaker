@@ -26,7 +26,8 @@ export const useDataPaletteStore = create<IDataPaletteStore>((set, get) => ({
     },
     clearCurrentPalette: () => {
         set(() => ({ currentPaletteColor: null }))
-    },
+    }
+    ,
     postNewPaletteColor: async (dataPalette: ISendPaletteData) => {
         await postNewPaletteColor(dataPalette);
         const morePalettes = await getDataPalettesForPage(0, 10);
@@ -39,8 +40,17 @@ export const useDataPaletteStore = create<IDataPaletteStore>((set, get) => ({
         set(() => ({ paletteColor: morePalettes }));
     },
     addTagsToSend: (tag: ITag) => {
-        const { tagsToSend } = get()
-        set(() => ({ tagsToSend: [...tagsToSend, tag] }))
+        const { tagsToSend } = get();
+        const tagExists = tagsToSend.some(existingTag => existingTag.name === tag.name);
+        if (!tagExists) {
+            set((prevState) => ({ tagsToSend: [...prevState.tagsToSend, tag] }));
+        }
+    }
+    ,
+    removeTagToSend: (tagName: string) => {
+        set((prevState) => ({
+            tagsToSend: prevState.tagsToSend.filter(tag => tag.name !== tagName)
+        }));
     },
     clearTagsToSend: () => {
         set(() => ({ tagsToSend: [] }))

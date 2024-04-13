@@ -17,6 +17,8 @@ export interface IResultsSearchProps {
     tagsResults: ITag[];
 }
 
-export interface ITagProps {
-    tagData: ITag;
+type TagSize = 'large' | 'small'
+
+export interface ITagProps extends ITag {
+    size: TagSize;
 }

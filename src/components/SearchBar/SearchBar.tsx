@@ -18,7 +18,9 @@ export const SearchBar: FC<ISearchBarProps> = ({ }) => {
             <InputSearchBar
                 onChange={handleChange}
             />
-            <ResultsSearch />
+            <ResultsSearch 
+                tagsResults={exampleTagArrray}
+            />
         </SearchBarContanier>
     )
 }

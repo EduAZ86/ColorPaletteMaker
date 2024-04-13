@@ -1,7 +1,7 @@
-import { ColorPalleteType } from "@/types/data";
+import { ColorPalleteType, IColorPallete } from "@/types/data";
 
 export interface IAboutPalettetProps {
-    palette: ColorPalleteType;
+    palette: IColorPallete;
     date?: string;
 }
 

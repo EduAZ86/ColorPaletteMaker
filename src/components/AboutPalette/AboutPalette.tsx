@@ -5,14 +5,16 @@ import { Typography } from "../Typography";
 import { IAboutPalettetProps } from "./types";
 import { AboutPaletteContainer } from "./styles.tw";
 import DownloadPaletteButton from "../DownloadPaletteButton";
+import { setTimeAgo } from "@/utils/timeAgoCalculator";
 
 const AboutPalette: React.FC<IAboutPalettetProps> = ({ palette }) => {
-    const arrayColorPalette = [palette.first_color, palette.second_color, palette.third_color, palette.fourth_color, palette.fifth_color]
+    const arrayColorPalette: string[] = Object.values(palette.colors.colorsExa)
+    const timeAgo = setTimeAgo(palette.date.create_date_ms)
     return (
         <AboutPaletteContainer>
             <FavButton
-                key={`${palette.idColors}FavButton`}
-                idPalette={palette.idColors}
+                key={`${palette.idColors}-FavButton`}
+                palette={palette}
             />
             <DownloadPaletteButton
                 palette={arrayColorPalette}
@@ -20,7 +22,7 @@ const AboutPalette: React.FC<IAboutPalettetProps> = ({ palette }) => {
             <Typography
                 variant="label"
             >
-                8 mounth
+                {timeAgo}
             </Typography>
         </AboutPaletteContainer>
     )

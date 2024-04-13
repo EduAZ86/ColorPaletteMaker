@@ -8,13 +8,14 @@ export interface IDataPaletteStore {
     tagsResults: ITag[];
     paletteColor: IColorPallete[];
     currentPaletteColor: IColorPallete | null;
-    getAllPaletteForPage: (offset: number, lengthPage: number) => Promise<void>;
+    getAllPaletteForPage: () => Promise<void>;
     clearPalettes: () => void;
     getPaletteForID: (idPalette: string) => Promise<void>;
     clearCurrentPalette: () => void
     postNewPaletteColor: (dataPalette: ISendPaletteData) => Promise<void>;
     updateSocialColorPalette: (idPalette: string, interaction: TInteraction) => Promise<void>;
     addTagsToSend: (tag: ITag) => void;
+    removeTagToSend: (tagName: string) => void;
     clearTagsToSend: () => void;
     getTagsResults: (name: string) => Promise<void>;
     clearTagsResults: () => void;

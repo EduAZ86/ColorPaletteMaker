@@ -3,6 +3,7 @@ import React from 'react';
 import { ICardMapperProps } from './types';
 import { CardMapperContainer } from './styles.tw';
 import { PaletteColorCard } from '../PaletteColorCard';
+import { IColorPallete } from '@/types/data';
 
 export const CardMapper: React.FC<ICardMapperProps> = ({ arrayColorPalettes }) => {
 
@@ -11,11 +12,11 @@ export const CardMapper: React.FC<ICardMapperProps> = ({ arrayColorPalettes }) =
         >
             {arrayColorPalettes
                 ?
-                arrayColorPalettes.map((item) => {
+                arrayColorPalettes.map((palette: IColorPallete) => {
                     return (
                         <PaletteColorCard
-                            key={item.idColors}
-                            paletteColorProp={item}
+                            key={palette.idColors}
+                            paletteColorProp={palette}
                         />
                     )
                 })

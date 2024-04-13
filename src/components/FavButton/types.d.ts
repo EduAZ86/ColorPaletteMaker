@@ -1,3 +1,4 @@
+import { IColorPallete } from "@/types/data";
 import { ReactNode } from "react";
 
 export interface IButtonComponentProps {
@@ -7,5 +8,5 @@ export interface IButtonComponentProps {
 }
 
 interface IFavButtonProps {
-    idPalette: string;
+    palette: IColorPallete;
 }

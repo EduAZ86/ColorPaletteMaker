@@ -1,20 +1,17 @@
 'use client'
-import { useFavoritesStore } from '@/store/favoritesStore';
 import React, { useEffect, useState } from 'react';
 import { BiHeart, BiSolidHeart } from 'react-icons/bi';
 import { IFavButtonProps } from './types';
 import { ButtonComponent } from './styles.tw';
+import { useColectionStore } from '@/services/colectionPalettesStore';
 
-const FavButton: React.FC<IFavButtonProps> = ({ idPalette }) => {
+const FavButton: React.FC<IFavButtonProps> = ({ palette }) => {
     const [press, setPress] = useState<boolean>(false)
     const [isFav, setIsFav] = useState<boolean>(false)
-
-    const addFav = useFavoritesStore((state) => state.add_fav)
-    const removeFav = useFavoritesStore((state) => state.remove_fav)
-    const allFavs = useFavoritesStore((state) => state.palette_favs)
+    const { addToLocalColection, removeFromLocalStorage, LocalColection } = useColectionStore()
 
     useEffect(() => {
-        if (allFavs.includes(idPalette)) {
+        if (LocalColection.find(paletteColor => paletteColor._id === palette._id)) {
             setIsFav(true)
         } else {
             setIsFav(false)
@@ -23,10 +20,10 @@ const FavButton: React.FC<IFavButtonProps> = ({ idPalette }) => {
 
     const handlePress = () => {
         setPress(!press)
-        if (allFavs.includes(idPalette)) {
-            removeFav(idPalette)
+        if (LocalColection.find(paletteColor => paletteColor._id === palette._id)) {
+            removeFromLocalStorage(palette._id)
         } else {
-            addFav(idPalette)
+            addToLocalColection(palette)
         }
     }
 

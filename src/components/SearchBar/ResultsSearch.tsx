@@ -17,7 +17,8 @@ export const ResultsSearch: FC<IResultsSearchProps> = ({ tagsResults }) => {
                 return (
                     <Tag
                         key={index}
-                        tagData={item}
+                        {...item}
+                        size="large"
                     />
                 )
             })}
