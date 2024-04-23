@@ -5,4 +5,5 @@ export interface IColectionPalettesStore {
     addToLocalColection: (palette: IColorPallete) => void;
     getFavsToLocalStorage: () => void;
     removeFromLocalStorage: (clave: string) => void;
+    clearLocalColection: () => void;
 }

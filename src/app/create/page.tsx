@@ -9,11 +9,12 @@ import { SearchBar } from "@/components/SearchBar";
 import { FC } from "react";
 import toast, { Toaster } from 'react-hot-toast';
 import { useDataPaletteStore } from "@/services/dataPaletteStore";
+import { postDataPalette } from "@/class/postDataPalette.class";
 
 const Create: FC = () => {
     const { handleSubmit, register, reset, watch } = useForm()
 
-    const { clearTagsToSend, tagsToSend } = useDataPaletteStore()
+    const { clearTagsToSend, tagsToSend, postNewPaletteColor } = useDataPaletteStore()
 
     const onSubmit = handleSubmit((data) => {
 
@@ -27,6 +28,18 @@ const Create: FC = () => {
             if (tagsToSend.length > 0) {
                 toast.success('Pallet sent successfully');
                 console.log(data);
+                const newPalette = {
+                    colors: {
+                        first_color: data["color-1"],
+                        second_color: data["color-2"],
+                        third_color: data["color-3"],
+                        fourth_color: data["color-4"],
+                        fifth_color: data["color-5"]
+                    },
+                    createDate_ms: new Date().getTime(),
+                    tags: tagsToSend
+                };
+                postNewPaletteColor(newPalette)
                 clearTagsToSend()
                 reset()
             } else {

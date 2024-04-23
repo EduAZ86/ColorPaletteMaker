@@ -2,7 +2,7 @@ import { IIncommingDataPalette, ISendPaletteData } from "@/types/data";
 import { TInteraction } from "@/types/fetchParams";
 import axios, { AxiosResponse } from "axios";
 
-const BASE_URL = "./http://";
+const BASE_URL = "/api";
 
 const fetchData = axios.create({
     baseURL: BASE_URL,
@@ -11,7 +11,7 @@ const fetchData = axios.create({
 
 export const getDataPalettesForPage = async (offset: number, lengthPage: number) => {
     try {
-        const response: AxiosResponse<IIncommingDataPalette> = await fetchData.get(`/get?lengthPage=${lengthPage}&offset=${offset}`);
+        const response: AxiosResponse<IIncommingDataPalette> = await fetchData.get(`/paletteColors?lengthPage=${lengthPage}&offset=${offset}`);
         return response.data.response.data
     } catch (error) {
         console.log(error);
@@ -20,7 +20,7 @@ export const getDataPalettesForPage = async (offset: number, lengthPage: number)
 
 export const getDatapaletteByID = async (idPalette: string) => {
     try {
-        const response = await fetchData.get(`./getbyid/:${idPalette}`);
+        const response = await fetchData.get(`/paletteColors/:${idPalette}`);
         return response.data
     } catch (error) {
         console.log(error);
@@ -29,7 +29,7 @@ export const getDatapaletteByID = async (idPalette: string) => {
 
 export const postNewPaletteColor = async (dataPalette: ISendPaletteData) => {
     try {
-        const response = await fetchData.post('./new', dataPalette);
+        const response = await fetchData.post('/paletteColors', dataPalette);
         return response.data
     } catch (error) {
         console.log(error);
