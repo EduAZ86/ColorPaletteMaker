@@ -1,4 +1,4 @@
-import { IIncommingDataPalette, ISendPaletteData } from "@/types/data";
+import { IIncommingDataPalette, ISendPaletteData, ITag } from "@/types/data";
 import { TInteraction } from "@/types/fetchParams";
 import axios, { AxiosResponse } from "axios";
 
@@ -9,10 +9,26 @@ const fetchData = axios.create({
     timeout: 5000
 });
 
+export const findTagsByName = async (name: string) => {
+    try {
+        const response = await fetchData.get(`/tags`, {
+            params: {
+                name: name === "" ? "." : name
+            }
+        });
+        return response.data.data.response
+
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 export const getDataPalettesForPage = async (offset: number, lengthPage: number) => {
     try {
         const response: AxiosResponse<IIncommingDataPalette> = await fetchData.get(`/paletteColors?lengthPage=${lengthPage}&offset=${offset}`);
-        return response.data.response.data
+        console.log(response);
+        
+        return response.data.data.response
     } catch (error) {
         console.log(error);
     }
@@ -45,9 +61,10 @@ export const updateSocialColorPalette = async (idPalette: string, interaction: T
     }
 };
 
-export const findTagsByName = async (name: string) => {
+
+export const postNewTag = async (dataTag: ITag) => {
     try {
-        const response = await fetchData.get(`/tags/getByName/:${name}`);
+        const response = await fetchData.post('/tags', dataTag);
         return response.data
     } catch (error) {
         console.log(error);

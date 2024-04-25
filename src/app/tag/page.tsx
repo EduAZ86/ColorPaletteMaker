@@ -7,6 +7,9 @@ import { useForm } from "react-hook-form";
 import { CreateTag } from "@/components/CreateTag/CreateTag";
 import { SubmitButtonTag } from "@/components/CreateTag/SubmitButtonTag";
 import { InputNameTag } from "@/components/CreateTag/InputNameTag";
+import toast, { Toaster } from "react-hot-toast";
+import { TagColor } from "@/class/TagColor";
+import { postNewTag } from "@/services/fetching";
 
 
 const Tag: FC = () => {
@@ -15,7 +18,22 @@ const Tag: FC = () => {
 
     const onSubmit = handleSubmit((data) => {
 
-        reset()
+        if (data["color-name-tag"] !== "#000000") {
+
+            if (data["name-name-tag"] !== '' || data["name-name-tag"] !== null) {
+                console.log(data);
+                const newtag = new TagColor(data["color-name-tag"], data["name-name-tag"])
+                postNewTag(newtag)
+                toast.success('Tag sent successfully');
+                reset()
+            } else {
+                toast.error('Type Name tag');
+            }
+
+        } else {
+            toast.error('Select color tag');
+        }
+
     })
 
     return (
@@ -35,6 +53,7 @@ const Tag: FC = () => {
                 />
                 <SubmitButtonTag />
             </CreateTagForm>
+            <Toaster />
         </CreateTagContainer>
     )
 }

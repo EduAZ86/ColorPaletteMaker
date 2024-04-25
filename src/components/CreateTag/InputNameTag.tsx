@@ -8,7 +8,7 @@ export const InputNameTag: FC<IInputNameTagProps> = ({ register }) => {
         <div
             className={`
             md:w-1/3 md:h-16
-            w-14 h-20
+            
             flex 
             flex-row relative
             justify-center items-center

@@ -2,19 +2,27 @@ import TagModel from "../models/tags"
 import { ITag } from "../types/data"
 
 export const getTagsByNameController = async (name: string) => {
-    const data = await TagModel.find({ name: name })
-    if (data && data.length > 0) {
-        return { success: true, response: data }
+    let data;
+    if (name === ".") {
+        data = await TagModel.find({});
+    } else {
+        data = await TagModel.find({ name: name });
     }
-    return { success: false, message: 'there is no tags palette to show' }
+    if (data && data.length > 0) {
+        return { success: true, response: data };
+    }
+    return { response: [], success: false, message: 'there is no tags palette to show' };
 };
 
+
 export const postNewTagsController = async (incommingTag: ITag) => {
-    const foundTag = await TagModel.findById(incommingTag._id)
-    if (!foundTag) {
-        throw new Error('the tag already exists')
-    };
-    const newTag = new TagModel({ name: incommingTag, color: incommingTag.color });
+    if (incommingTag._id) {
+        const foundTag = await TagModel.findById(incommingTag._id)
+        if (!foundTag) {
+            throw new Error('the tag already exists')
+        };
+    }
+    const newTag = new TagModel({ name: incommingTag.name, color: incommingTag.color });
     const response = newTag.save();
     return { success: true, response: response }
 };
@@ -30,3 +38,4 @@ export const deleteTagController = async (id: string) => {
     };
     return { success: true, response: removed }
 };
+
