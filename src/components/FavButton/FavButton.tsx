@@ -4,13 +4,18 @@ import { BiHeart, BiSolidHeart } from 'react-icons/bi';
 import { IFavButtonProps } from './types';
 import { ButtonComponent } from './styles.tw';
 import { useColectionStore } from '@/services/colectionPalettesStore';
+import { useDataPaletteStore } from '@/services/dataPaletteStore';
 
 const FavButton: React.FC<IFavButtonProps> = ({ palette }) => {
     const [press, setPress] = useState<boolean>(false)
     const [isFav, setIsFav] = useState<boolean>(false)
-    const { addToLocalColection, removeFromLocalStorage, LocalColection } = useColectionStore()
+    const { addToLocalColection, removeFromLocalStorage, LocalColection, getFavsToLocalStorage } = useColectionStore()
+    const { updateSocialColorPalette } = useDataPaletteStore()
 
     useEffect(() => {
+        if (LocalColection.length === 0) {
+            getFavsToLocalStorage()
+        }
         if (LocalColection.find(paletteColor => paletteColor._id === palette._id)) {
             setIsFav(true)
         } else {
@@ -22,8 +27,10 @@ const FavButton: React.FC<IFavButtonProps> = ({ palette }) => {
         setPress(!press)
         if (LocalColection.find(paletteColor => paletteColor._id === palette._id)) {
             removeFromLocalStorage(palette._id)
+            updateSocialColorPalette(palette._id, "disfav")
         } else {
             addToLocalColection(palette)
+            updateSocialColorPalette(palette._id, "fav")
         }
     }
 
@@ -38,7 +45,7 @@ const FavButton: React.FC<IFavButtonProps> = ({ palette }) => {
                 dark:text-dark-font
             '
             >
-                432
+                {palette.social.favs}
             </span>
         </ButtonComponent>
     )

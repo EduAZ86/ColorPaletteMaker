@@ -1,0 +1,1 @@
+export { SearchBarTags } from './SearchBarTags';

@@ -3,7 +3,7 @@ import { IincommigPaletteData } from "@/types/dataApi";
 import PaletteColorModel from "../models/paletteColor"
 import TagModel from "../models/tags";
 
-import { TInteraction, TLengthPage } from "../types/types";
+import { TInteraction } from "../types/types";
 import { postDataPalette } from "@/class/postDataPalette.class";
 
 export const getPalleteByIdController = async (idPalette: string) => {
@@ -75,7 +75,13 @@ export const updateSocialColorPaletteController = async (idPalette: string, inte
 
     const updateVariantSchema: Record<TInteraction, (social: any) => void> = {
         fav: (social: any) => { social.favs! += 1; },
-        disfav: (social: any) => { social.favs! -= 1; },
+        disfav: (social: any) => {
+            if (social.favs < 1) {
+                social.favs! += 1
+            } else {
+                social.favs = 0
+            }
+        },
         download: (social: any) => { social.downloads! += 1; },
         share: (social: any) => { social.shares! += 1; }
     };
@@ -88,4 +94,15 @@ export const updateSocialColorPaletteController = async (idPalette: string, inte
     foundColorPalette.social = social;
     await foundColorPalette.save();
     return { success: true, message: 'Color palette social updated successfully' };
+};
+
+export const findPalettesByTags = async (data: string[] = []) => {
+    const palettes = await PaletteColorModel.find({
+        tags: { $all: data }
+    }).populate('tags')
+    if (palettes) {
+        return { success: true, response: palettes }
+    } else {
+        return { success: false, message: 'error find palettes' };
+    }
 };

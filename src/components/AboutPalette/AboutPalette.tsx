@@ -7,8 +7,7 @@ import { AboutPaletteContainer } from "./styles.tw";
 import DownloadPaletteButton from "../DownloadPaletteButton";
 import { setTimeAgo } from "@/utils/timeAgoCalculator";
 
-const AboutPalette: React.FC<IAboutPalettetProps> = ({ palette }) => {
-    const arrayColorPalette: string[] = Object.values(palette.colors.colorsExa)
+const AboutPalette: React.FC<IAboutPalettetProps> = ({ palette }) => {    
     const timeAgo = setTimeAgo(palette.date.create_date_ms)
     return (
         <AboutPaletteContainer>
@@ -17,7 +16,7 @@ const AboutPalette: React.FC<IAboutPalettetProps> = ({ palette }) => {
                 palette={palette}
             />
             <DownloadPaletteButton
-                palette={arrayColorPalette}
+                palette={palette}
             />
             <Typography
                 variant="label"

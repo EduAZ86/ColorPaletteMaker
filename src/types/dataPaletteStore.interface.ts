@@ -21,5 +21,9 @@ export interface IDataPaletteStore {
     clearTagsResults: () => void;
     setOffset: (offset: number) => void;
     clearOffset: () => void;
-    setLengthPage: (lengthPage: number) => void
+    setLengthPage: (lengthPage: number) => void;
+    setRandomOrder: () => void;
+    setNewOrder: () => void;
+    setPopularOrder: () => void;
+    getPaletteForTag: (arrayIdTags: string[]) => Promise<void>;
 }

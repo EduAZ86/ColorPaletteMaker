@@ -1,28 +1,39 @@
 'use client'
-import { CardMapper } from '@/components/CardMapper';
-import { HomeContainer } from './HomeContainer';
-import { useDataPaletteStore } from '@/services/dataPaletteStore';
-import { useObserver } from '@/hooks/useObserver';
 import { useEffect } from 'react';
+import { ITag } from '@/types/data';
+import { HomeContainer } from './HomeContainer';
+import { CardMapper } from '@/components/CardMapper';
+import { SearchBarTags } from '@/components/SearchBarTags';
+import { useDataPaletteStore } from '@/services/dataPaletteStore';
+
 
 export default function Home() {
-  const { paletteColor, getAllPaletteForPage } = useDataPaletteStore()
+  const { paletteColor, getAllPaletteForPage, getPaletteForTag, clearPalettes } = useDataPaletteStore()
+  const { tagsToSend } = useDataPaletteStore();
+
   useEffect(() => {
-
-    getAllPaletteForPage()
-
-    return () => {
-
+    const arrayIDTags = tagsToSend.map((item: ITag) => item?._id)
+    if (arrayIDTags.length > 0) {
+      getPaletteForTag(arrayIDTags);
+    } else {
+      getAllPaletteForPage();
     }
-  }, [])
-
-
-
+    return () => {
+      clearPalettes();
+    }
+  }, [tagsToSend])
   return (
     <HomeContainer>
       <div
-
+        className={`
+          w-full h-full
+          flex flex-col
+          gap-4
+        `}
       >
+        <SearchBarTags
+          addTagButton={false}
+        />
         <CardMapper
           arrayColorPalettes={paletteColor}
         />

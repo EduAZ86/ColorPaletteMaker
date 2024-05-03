@@ -6,8 +6,10 @@ import { NextResponse } from "next/server";
 
 export const DELETE = async (req: NextApiRequest, context: { params: Params }) => {
     await connectDB()
+    console.log("id palette");
     try {
         const id = context.params.id as string;
+
         const response = await deleteTagController(id);
         return NextResponse.json({ data: response }, { status: 200 })
     } catch (error) {

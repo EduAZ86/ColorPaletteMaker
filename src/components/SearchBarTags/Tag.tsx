@@ -6,14 +6,15 @@ import { useDataPaletteStore } from "@/services/dataPaletteStore"
 export const Tag: FC<ITagProps> = ({ color, name, _id, size }) => {
     const { addTagsToSend, removeTagToSend } = useDataPaletteStore();
 
-    const handleClick = () => {
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.stopPropagation();
         addTagsToSend({ color, name, _id })
         if (size === 'small') {
             removeTagToSend(name)
         }
     }
     return (
-        <button
+        <span
             className={`
                 w-fit h-fit  py-1
                 ${size === 'large' ? 'px-4' : 'px-1'}
@@ -24,9 +25,8 @@ export const Tag: FC<ITagProps> = ({ color, name, _id, size }) => {
                 rounded-l-full rounded-r-full
                 bg-light-background dark:bg-dark-background
                 cursor-pointer
-            `}
+            `}          
             onClick={handleClick}
-            type="button"
         >
             <span
                 className={`
@@ -39,11 +39,11 @@ export const Tag: FC<ITagProps> = ({ color, name, _id, size }) => {
             />
             <Typography
                 variant="label"
-                style={{cursor:'pointer'}}
+                style={{ cursor: 'pointer' }}
             >
                 {name}
             </Typography>
             <span></span>
-        </button>
+        </span>
     )
 }

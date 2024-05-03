@@ -35,7 +35,7 @@ export interface IColorsRGB {
 export interface ITag {
     name: string;
     color: string;
-    _id?: string;
+    _id: string;
 }
 
 export interface IColorPallete {
@@ -56,8 +56,6 @@ export interface IIncommingDataPalette {
     success: boolean;
 
 }
-
-
 export interface ISendPaletteData {
     colors: IColorsExa;
     tags: ITag[];

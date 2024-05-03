@@ -5,7 +5,9 @@ export const NavBarContainer: FC<INavBarContainerProps> = ({ children }) => {
     return (
         <div
             className={`
-            fixed flex flex-col bg-light-background w-screen h-16 pl-0 pt-0 left-0 bottom-0 shadow-bar z-20
+            fixed flex flex-col bg-light-background w-screen h-16 
+            pl-0 pt-4
+             left-0 bottom-0 shadow-bar z-20
           dark:bg-dark-background dark:shadow-dark-bar
             md:flex-row  md:w-44  md:pl-2  md:top-0 md:h-screen md:shadow-bar
         `}

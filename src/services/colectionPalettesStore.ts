@@ -6,7 +6,7 @@ import { IColorPallete } from "@/types/data";
 export const useColectionStore = create<IColectionPalettesStore>((set, get) => ({
     LocalColection: [],
     addToLocalColection: (palette: IColorPallete) => {
-        saveToLocalStorage(palette._id, palette);
+        saveToLocalStorage(palette);
         const localColectionPalettes = getFavsToLocalStorage();
         set(() => ({ LocalColection: localColectionPalettes }));
     },

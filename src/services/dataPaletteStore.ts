@@ -1,7 +1,7 @@
 import { IDataPaletteStore } from "@/types/dataPaletteStore.interface";
 import { create } from "zustand";
-import { findTagsByName, getDataPalettesForPage, getDatapaletteByID, postNewPaletteColor, updateSocialColorPalette } from "./fetching";
-import { ISendPaletteData, ITag } from "@/types/data";
+import { findTagsByName, getDataPalettesForPage, getDatapaletteByID, getPalettesByTag, postNewPaletteColor, updateSocialColorPalette } from "./fetching";
+import { IColorPallete, ISendPaletteData, ITag } from "@/types/data";
 import { TInteraction } from "@/types/fetchParams";
 
 export const useDataPaletteStore = create<IDataPaletteStore>((set, get) => ({
@@ -14,7 +14,19 @@ export const useDataPaletteStore = create<IDataPaletteStore>((set, get) => ({
     getAllPaletteForPage: async () => {
         const { offset, lengthPage } = get();
         const morePalettes = await getDataPalettesForPage(offset!, lengthPage!);
-        set(state => ({ paletteColor: [...state.paletteColor, ...morePalettes!] }));
+        const filterUniquePalettes = (existingPalettes: IColorPallete[], newPalettes: IColorPallete[]) => {
+            return newPalettes.filter((newPalette: IColorPallete) => (
+                !existingPalettes.some((existingPalette: IColorPallete) => (
+                    existingPalette._id === newPalette._id
+                ))
+            ));
+        };
+        const addMorePalettes = (existingPalettes: IColorPallete[], newPalettes: IColorPallete[]) => {
+            return [...existingPalettes, ...newPalettes];
+        };
+        set(state => ({
+            paletteColor: addMorePalettes(state.paletteColor, filterUniquePalettes(state.paletteColor, morePalettes!))
+        }));
         set({ offset: offset! + lengthPage! });
     },
     clearPalettes: () => {
@@ -45,8 +57,7 @@ export const useDataPaletteStore = create<IDataPaletteStore>((set, get) => ({
         if (!tagExists) {
             set((prevState) => ({ tagsToSend: [...prevState.tagsToSend, tag] }));
         }
-    }
-    ,
+    },
     removeTagToSend: (tagName: string) => {
         set((prevState) => ({
             tagsToSend: prevState.tagsToSend.filter(tag => tag.name !== tagName)
@@ -70,7 +81,35 @@ export const useDataPaletteStore = create<IDataPaletteStore>((set, get) => ({
     },
     setLengthPage: (lengthPage: number) => {
         set(() => ({ lengthPage: lengthPage }))
+    },
+    setPopularOrder: () => {
+        set((state) => ({
+            paletteColor: state.paletteColor.sort((a, b) => {
+                return b.social.favs - a.social.favs
+            })
+        }));
+    },
+    setNewOrder: () => {
+        set((state) => ({
+            paletteColor: state.paletteColor.sort((a, b) => {
+                return b.date.create_date_ms - a.date.create_date_ms
+            })
+        }));
+    },
+    setRandomOrder: () => {
+        set((state) => ({
+            paletteColor: state.paletteColor.sort((a, b) => {
+                return Math.random() - 0.5
+            })
+        }));
+    },
+    getPaletteForTag: async (arrayIdTags) => {
+        const palettesForNameTag: IColorPallete[] = await getPalettesByTag(arrayIdTags)
+        set(() => ({
+            paletteColor: palettesForNameTag
+        }));
     }
 }),
+
 
 )

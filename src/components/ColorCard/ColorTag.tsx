@@ -7,8 +7,7 @@ export const ColorTag: FC<IColorTagProps> = ({ color }) => {
             className={`
         w-12 
         h-24 
-        rounded-t-full rounded-b-full
-        group-hover:h-20 group-hover:duration-700 duration-700
+        rounded-t-full rounded-b-full      
         `}
             style={{ background: color }}
         />

@@ -2,23 +2,29 @@
 import { useDrawnPalette } from "@/hooks/useDrawnPalette";
 import React from "react";
 import { BiDownload } from 'react-icons/bi'
+import { Typography } from "../Typography";
+import { IColorPallete } from "@/types/data";
+import { useDataPaletteStore } from "@/services/dataPaletteStore";
 
 interface DownloadPaletteButtonProps {
-    palette: string[]
+    palette: IColorPallete
 }
 
 const DownloadPaletteButton: React.FC<DownloadPaletteButtonProps> = ({ palette }) => {
 
-    const { canvasRef, downloadPalette } = useDrawnPalette(palette)
+    const arrayColorPalette: string[] = Object.values(palette.colors.colorsExa)
+    const { canvasRef, downloadPalette } = useDrawnPalette(arrayColorPalette)
+    const { updateSocialColorPalette } = useDataPaletteStore()
 
     const handleClick = () => {
         downloadPalette()
+        updateSocialColorPalette(palette._id, "download")
     }
 
     return (
         <div
             className={`
-                w-fit
+                w-fit flex flex-row items-center
             `}
         >
             <canvas className='w-0 h-0' ref={canvasRef} width={500} height={300}></canvas>
@@ -33,6 +39,9 @@ const DownloadPaletteButton: React.FC<DownloadPaletteButtonProps> = ({ palette }
             >
                 <BiDownload />
             </button>
+            <Typography variant="label">
+                {palette.social.downloads}
+            </Typography>
         </div>
     )
 }

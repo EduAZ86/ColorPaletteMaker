@@ -1,15 +1,14 @@
 'use client'
+import { FC } from "react";
+import { useForm } from "react-hook-form";
 import { CreateContainer } from "./styles.d";
-import { CreatePaletteCard } from "@/components/CreatePaletteCard";
+import toast, { Toaster } from 'react-hot-toast';
 import { Typography } from "@/components/Typography";
 import { PaletteColorForm } from "./PaletteColorForm";
-import { useForm } from "react-hook-form";
 import { SubmitButtonPalette } from "./SubmitButtonPalette";
-import { SearchBar } from "@/components/SearchBar";
-import { FC } from "react";
-import toast, { Toaster } from 'react-hot-toast';
 import { useDataPaletteStore } from "@/services/dataPaletteStore";
-import { postDataPalette } from "@/class/postDataPalette.class";
+import { CreatePaletteCard } from "@/components/CreatePaletteCard";
+import { SearchBarTags } from "@/components/SearchBarTags/SearchBarTags";
 
 const Create: FC = () => {
     const { handleSubmit, register, reset, watch } = useForm()
@@ -64,7 +63,9 @@ const Create: FC = () => {
                     watch={watch}
                 />
                 <SubmitButtonPalette />
-                <SearchBar />
+                <SearchBarTags 
+                    addTagButton
+                />
             </PaletteColorForm>
             <Toaster />
         </CreateContainer>

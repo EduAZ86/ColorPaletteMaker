@@ -1,13 +1,20 @@
 'use client'
 import { FC, useState } from "react";
 import { IInputSearchBarProps } from "./types";
-import { BiCross, BiSearch, BiX } from 'react-icons/bi';
+import { BiSearch, BiX } from 'react-icons/bi';
 import { useDataPaletteStore } from "@/services/dataPaletteStore";
 import { Tag } from "./Tag";
 import { ITag } from "@/types/data";
-export const InputSearchBar: FC<IInputSearchBarProps> = ({ onChange }) => {
+import Link from "next/link";
+export const InputSearchBar: FC<IInputSearchBarProps> = ({ onChange, addTagButton }) => {
     const [isFocused, setIsFocused] = useState<boolean>(false);
     const { tagsToSend, clearTagsToSend } = useDataPaletteStore()
+    const handleFocusInput = () => {
+        setIsFocused(true)
+    }
+    const handleOnBlurInput = () => {
+        setIsFocused(false)
+    }
     return (
         <div className={`
             w-full
@@ -16,8 +23,11 @@ export const InputSearchBar: FC<IInputSearchBarProps> = ({ onChange }) => {
             bg-light-background dark:bg-dark-background
             items-center justify-center
             rounded-lg
-            group        
+            group
+            gap-1
+            px-2        
         `}>
+            {addTagButton && <Link href={'/tag'} style={{ fontSize: '20px', textAlign: 'center', opacity: 0.6 }} >+</Link>}
             {tagsToSend?.map((tag: ITag, index: number) => <Tag {...tag} size="small" key={`${index}-${tag.name}`} />)}
             {tagsToSend.length > 0 && <span
                 onClick={() => clearTagsToSend()}
@@ -56,8 +66,8 @@ export const InputSearchBar: FC<IInputSearchBarProps> = ({ onChange }) => {
                     duration-700
                 `}
                 onChange={onChange}
-                onFocus={() => setIsFocused(true)}
-                onBlur={() => setIsFocused(false)}
+                onFocus={() => handleFocusInput()}
+                onBlur={() => handleOnBlurInput()}
                 placeholder="Agregue un tag"
             />
         </div>

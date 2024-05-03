@@ -1,15 +1,17 @@
 'use client'
 import { options } from "@/constants/navbarOptions"
-import { FC } from "react"
+import { FC, useEffect } from "react"
 
 import useCurrentPressButton from "@/hooks/useCurrentPressButton"
 import { NavBArSubContainer, NavBarContainer } from "./styles.tw"
 import { ButtonNavigation } from "../ButtonNavigation"
+import { usePathname } from 'next/navigation'
+
 
 const NavBar: FC = () => {
 
     const { currentPress, selectButton } = useCurrentPressButton(options)
-
+    
     return (
         <NavBarContainer>
             <NavBArSubContainer >

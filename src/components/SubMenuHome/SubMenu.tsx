@@ -1,17 +1,16 @@
 'use client'
 import React from "react"
-import { subMenuOptionType } from "@/types/menuOptions.type";
 import useCurrentPressButton from "@/hooks/useCurrentPressButton";
 import ThemeSwitcher from "../ThemeSwitcher";
 import { ISubMenuProps } from "./types";
+import { subMenuOptionType } from "@/class/MenuOptions.class";
+import { useDataPaletteStore } from "@/services/dataPaletteStore";
 
 export const SubMenu: React.FC<ISubMenuProps> = ({ subMenu }) => {
 
     const { currentPress, selectButton } = useCurrentPressButton(subMenu)
+    const { setNewOrder, setPopularOrder, setRandomOrder } = useDataPaletteStore()
 
-    const handleClick = (id: string) => {
-        selectButton(id)
-    }
 
     return (
         <div className="
@@ -19,6 +18,20 @@ export const SubMenu: React.FC<ISubMenuProps> = ({ subMenu }) => {
             md:relative md:bottom-0 md:left-0
         ">
             {subMenu.map((item: subMenuOptionType, index: number) => {
+                const handleClick = (id: string) => {
+                    selectButton(id)
+                    if (item.name === "random") {
+                        setRandomOrder()
+                    }
+                    if (item.name === "new") {
+                        setNewOrder()
+                    }
+                    if (item.name === "popular") {
+                        setPopularOrder()
+                    }
+
+                }
+                const name: string = item.name
                 const id: string = item.id
                 if (id === 'settings') {
                     return (
@@ -42,7 +55,7 @@ export const SubMenu: React.FC<ISubMenuProps> = ({ subMenu }) => {
                         key={index}
                         onClick={() => handleClick(id)}
                     >
-                        {item.name}
+                        {name}
                     </button>
                 )
             })}

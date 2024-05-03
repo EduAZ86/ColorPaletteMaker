@@ -1,0 +1,1 @@
+export { SearchBarPalettes } from './SearchBarPalette';

@@ -1,17 +1,34 @@
 import { IColorPallete } from "@/types/data";
 
-export const saveToLocalStorage = (clave: string, palette: IColorPallete) => {
-    localStorage.setItem(clave, JSON.stringify(palette));
+const KEY = "palettes_fav";
+
+interface IPaletteFavs {
+    favs: IColorPallete[]
 }
 
-export const getFavsToLocalStorage = () => {
-    const palettesFavs: IColorPallete[] = Object.keys(localStorage).map(clave => {
-        const valor = localStorage.getItem(clave);
-        return valor ? JSON.parse(valor) : null;
-    }).filter(valor => valor !== null);
-    return palettesFavs
+const palettesFavs: IPaletteFavs = {
+    favs: []
 }
 
-export const removeFromLocalStorage = (idPalette: string) => {
-    localStorage.removeItem(idPalette);
+export const saveToLocalStorage = (PaletteFav: IColorPallete) => {
+    const currentFavs: IColorPallete[] = getFavsToLocalStorage();
+    if (!currentFavs.includes(PaletteFav)) {
+        const updateFavs = [...currentFavs, PaletteFav];
+        palettesFavs.favs = updateFavs;
+        window.localStorage.setItem(KEY, JSON.stringify(palettesFavs));
+    }
 }
+
+export const getFavsToLocalStorage = (): IColorPallete[] => {
+    const localStorage = window.localStorage.getItem(KEY)
+    const currentPalettesFavs: IPaletteFavs = localStorage ? JSON.parse(localStorage) : palettesFavs
+    return currentPalettesFavs.favs
+}
+
+export const removeFromLocalStorage = (IDPaletteFav: string) => {
+    const currentFavs: IColorPallete[] = getFavsToLocalStorage();
+    const updateFavs = currentFavs.filter((item: IColorPallete) => item._id !== IDPaletteFav)
+    palettesFavs.favs = updateFavs;
+    window.localStorage.setItem(KEY, JSON.stringify(palettesFavs));
+}
+

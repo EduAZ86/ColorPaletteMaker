@@ -1,23 +1,21 @@
-import React,{useState,useEffect} from "react"
-import { CurrentPressButtonHookType } from "@/types/menuOptions.type"
+import React, { useState, useEffect } from "react"
+import { CurrentPressButtonHookType, menuOptionsType } from "@/types/menuOptions.type"
+import { usePathname } from "next/navigation"
 
-const useCurrentPressButton = (options:any[]):CurrentPressButtonHookType => {
-   
+const useCurrentPressButton = (options: menuOptionsType[]): CurrentPressButtonHookType => {
+
     const [currentPress, setCurrentPress] = useState('')
+    const pathName = usePathname().slice(1)
 
-    useEffect(()=>{
+    useEffect(() => {
         if (currentPress === '') {
-            setCurrentPress(options[0].id)            
+            setCurrentPress(options[0]?.id)
         }
-        
-    },[])
-
-    const selectButton:(id: string) => void = (id:string) => {
+    }, [pathName])
+    const selectButton: (id: string) => void = (id: string) => {
         setCurrentPress(id)
     }
-
-    return {currentPress, selectButton}
-
+    return { currentPress, selectButton }
 }
 
 export default useCurrentPressButton

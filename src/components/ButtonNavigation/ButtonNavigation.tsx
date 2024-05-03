@@ -27,7 +27,7 @@ export const ButtonNavigation: React.FC<IButtonNavigationProps> = ({ option, cur
                 currentPress={currentPress}
                 handlerClick={() => handleClick(option.id)}
             />
-            {currentPress && (option.subMenu.length > 0) && <SubMenu
+            {currentPress && (option.subMenu) && <SubMenu
                 key={option.name}
                 subMenu={option.subMenu}
             />}

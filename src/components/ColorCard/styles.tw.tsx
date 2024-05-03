@@ -7,9 +7,10 @@ export const ColorCardContainer: FC<IColorCardContainerProps> = ({ children }) =
             className={`
             flex relative
             flex-col justify-center
-            w-14 h-24
+            w-14 h-20
+            md:w-14 md:h-24
             items-center 
-            gap-2 px-1 py-1        
+            gap-1 p-1        
     `}
         >
             {children}
