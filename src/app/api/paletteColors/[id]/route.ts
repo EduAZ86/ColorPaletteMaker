@@ -1,12 +1,13 @@
 import connectDB from "@/lib/dbConnect";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 import { NextApiRequest } from "next";
 import { deletePaletteController, getPalleteByIdController, updateSocialColorPaletteController } from "@/lib/paletteColorsControllers";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 
+type RequestNext = Request | NextRequest
 
-export const GET = async (req: NextApiRequest, context: { params: Params }) => {
+export const GET = async (req: RequestNext, context: { params: Params }) => {
     await connectDB()
     try {
         const id = context.params.id as string;
@@ -17,7 +18,7 @@ export const GET = async (req: NextApiRequest, context: { params: Params }) => {
     }
 };
 
-export const DELETE = async (req: NextApiRequest, context: { params: Params }) => {
+export const DELETE = async (req: RequestNext, context: { params: Params }) => {
     await connectDB()
     try {
         const id = context.params.id as string;
@@ -28,7 +29,7 @@ export const DELETE = async (req: NextApiRequest, context: { params: Params }) =
     }
 };
 
-export const PUT = async (req: NextApiRequest, context: { params: Params }) => {
+export const PUT = async (req: RequestNext, context: { params: Params }) => {
     await connectDB()
     try {
         const id = context.params.id;
