@@ -7,8 +7,7 @@ export const InputNameTag: FC<IInputNameTagProps> = ({ register }) => {
     return (
         <div
             className={`
-            md:w-1/3 md:h-16
-            
+            md:w-1/3 md:h-16            
             flex 
             flex-row relative
             justify-center items-center
@@ -23,7 +22,6 @@ export const InputNameTag: FC<IInputNameTagProps> = ({ register }) => {
                     bg-light-background dark:bg-dark-background
                 `}
                 id={id}
-                name={name}
                 type="text"
                 {...register(name, { required: true })}
             />

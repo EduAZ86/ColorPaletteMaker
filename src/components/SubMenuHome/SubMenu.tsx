@@ -14,7 +14,12 @@ export const SubMenu: React.FC<ISubMenuProps> = ({ subMenu }) => {
 
     return (
         <div className="
-            flex flex-row absolute bottom-14 w-fit left-[-85%] h-8 items-center justify-center gap-1 bg-light-background dark:bg-dark-background rounded-lg px-1
+            flex 
+            flex-row 
+            absolute bottom-14 
+            w-fit
+            h-8 items-center justify-center gap-1
+             bg-light-background dark:bg-dark-background rounded-lg px-1
             md:relative md:bottom-0 md:left-0
         ">
             {subMenu.map((item: subMenuOptionType, index: number) => {
@@ -37,7 +42,11 @@ export const SubMenu: React.FC<ISubMenuProps> = ({ subMenu }) => {
                     return (
                         <div
                             className={`
-                            text-light-font dark:text-dark-font text-center px-2 py-1 rounded-lg ${currentPress === id ? 'text-xxs shadow-subMenu dark:shadow-dark-subMenu' : 'text-xxs'}
+                            text-light-font
+                             dark:text-dark-font
+                              text-center 
+                              px-2 py-1 
+                              rounded-lg ${currentPress === id ? 'text-xxs shadow-subMenu dark:shadow-dark-subMenu' : 'text-xxs'}
                         `}
                             key={index}
                         >
@@ -50,7 +59,10 @@ export const SubMenu: React.FC<ISubMenuProps> = ({ subMenu }) => {
                 return (
                     <button
                         className={`
-                        text-light-font dark:text-dark-font text-center px-2 py-1 rounded-lg ${currentPress === id ? 'text-xxs shadow-subMenu dark:shadow-dark-subMenu' : 'text-xxs'}
+                        text-light-font 
+                        dark:text-dark-font 
+                        text-center px-2 py-1 
+                        rounded-lg ${currentPress === id ? 'text-xxs shadow-subMenu dark:shadow-dark-subMenu' : 'text-xxs'}
                      `}
                         key={index}
                         onClick={() => handleClick(id)}

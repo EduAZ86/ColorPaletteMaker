@@ -110,6 +110,4 @@ export const useDataPaletteStore = create<IDataPaletteStore>((set, get) => ({
         }));
     }
 }),
-
-
 )

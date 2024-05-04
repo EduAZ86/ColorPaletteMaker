@@ -1,13 +1,26 @@
 'use client'
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { IInputColorTagProps } from "./types";
+import { useForm } from "react-hook-form";
 
 
 export const InputColorTag: FC<IInputColorTagProps> = ({ register, watch }) => {
     const name = 'color-name-tag';
     const id = 'color-id-tag';
+    const [isDisabled, setIsDisabled] = useState<boolean>(false);
+    useEffect(() => {
+        if (watch('colection')) {
+            setIsDisabled(true)
+        } else {
+            setIsDisabled(false)
+        }
+        return () => {
 
-    const watched = `${!watch(name) || watch(name) === '#000000' ? '' : watch(name)}`
+        }
+    }, [watch('colection')])
+
+
+    const watched = `${!watch(name) || watch(name) === '#000000' || watch(name) === 'transparent' ? '' : watch(name)}`
     return (
         <div
             className={`
@@ -27,10 +40,9 @@ export const InputColorTag: FC<IInputColorTagProps> = ({ register, watch }) => {
                 outline-none            
                 `}
                 id={id}
-                name={name}
                 type="color"
                 {...register(name, { required: true })}
-
+                disabled={isDisabled}
             />
             <span
                 className={`
@@ -45,8 +57,5 @@ export const InputColorTag: FC<IInputColorTagProps> = ({ register, watch }) => {
             `}
             >{watched.toUpperCase()}</span>
         </div>
-
-
-
     )
 }

@@ -12,9 +12,10 @@ import { TagColor } from "@/class/TagColor";
 import { postNewTag } from "@/services/fetching";
 
 
+
 const Tag: FC = () => {
 
-    const { handleSubmit, register, reset, watch } = useForm();
+    const { handleSubmit, reset, watch, register } = useForm();
 
     const onSubmit = handleSubmit((data) => {
 
@@ -22,7 +23,7 @@ const Tag: FC = () => {
 
             if (data["name-name-tag"] !== '' || data["name-name-tag"] !== null) {
                 console.log(data);
-                const newtag = new TagColor(data["color-name-tag"], data["name-name-tag"])
+                const newtag = new TagColor(data["color-name-tag"], data["name-name-tag"], '')
                 postNewTag(newtag)
                 toast.success('Tag sent successfully');
                 reset()
@@ -33,7 +34,6 @@ const Tag: FC = () => {
         } else {
             toast.error('Select color tag');
         }
-
     })
 
     return (
@@ -46,6 +46,7 @@ const Tag: FC = () => {
             >
                 <CreateTag
                     register={register}
+                    reset={reset}
                     watch={watch}
                 />
                 <InputNameTag

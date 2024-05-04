@@ -7,7 +7,7 @@ import Providers from '@/theme/ThemeProvider'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Color Palettes',
+  title: 'ShareColors',
   description: 'site to create and share color palettes',
 }
 

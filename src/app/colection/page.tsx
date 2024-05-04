@@ -11,8 +11,6 @@ const Colection: React.FC = () => {
 
   useEffect(() => {
     getFavsToLocalStorage()
-    console.log(LocalColection);
-    
     return () => {
       clearLocalColection()
     }

@@ -31,10 +31,8 @@ export const DELETE = async (req: NextApiRequest, context: { params: Params }) =
 export const PUT = async (req: NextApiRequest, context: { params: Params }) => {
     await connectDB()
     try {
-        const id = context.params.id; // El ID ya debería estar correctamente capturado desde los parámetros de la ruta
+        const id = context.params.id;
         const interaction = req.url?.split('=')[1]
-        console.log(interaction);
-
         const response = await updateSocialColorPaletteController(id, interaction!);
         return NextResponse.json({ data: response }, { status: 200 })
     } catch (error: any) {

@@ -11,11 +11,14 @@ export interface IImputsContainerProps {
 export interface IInputColorTagProps {
     register: UseFormRegister;
     watch: UseFormWatch<FieldValues>;
+    isColection: boolean;
 }
 
 export interface IInputNameTagProps extends Pick<IInputColorTagProps, 'register'> { }
 
-export interface ICreateTagProps extends Pick<IInputColorTagProps, 'register' | 'watch'> { }
+export interface ICreateTagProps extends Pick<IInputColorTagProps, 'register' | 'watch'> {
+    reset: UseFormReset<FieldValues>
+ }
 
 export interface ISubmitButtonProps {
     handlerClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
