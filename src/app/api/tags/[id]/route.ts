@@ -1,10 +1,9 @@
 import connectDB from "@/lib/dbConnect"
+import { NextRequest, NextResponse } from "next/server";
 import { deleteTagController } from "@/lib/tagsController";
-import { NextApiRequest } from "next"
-import { Params } from "next/dist/shared/lib/router/utils/route-matcher"
-import { NextResponse } from "next/server";
+import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 
-export const DELETE = async (req: NextApiRequest, context: { params: Params }) => {
+export const DELETE = async (req: NextRequest, context: { params: Params }) => {
     await connectDB()
     try {
         const id = context.params.id as string;

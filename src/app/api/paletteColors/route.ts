@@ -1,6 +1,5 @@
 import connectDB from "@/lib/dbConnect";
-import { NextResponse } from "next/server";
-import { NextApiRequest } from "next";
+import { NextRequest, NextResponse } from "next/server";
 import { getAllPalletesByPageController, postNewPalleteColorController } from "@/lib/paletteColorsControllers";
 
 
@@ -15,7 +14,7 @@ export const POST = async (req: any) => {
     }
 };
 
-export const GET = async (req: NextApiRequest) => {
+export const GET = async (req: any) => {
     try {
         await connectDB()
         let lengthPageValue, offsetValue;

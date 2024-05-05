@@ -24,9 +24,15 @@ export const NavBArSubContainer: FC<INavBarSubContainerProps> = ({ children }) =
     return (
         <div
             className={`
-            flex flex-row w-full h-full aling items-center justify-evenly gap-4 left-0 bg-light-background 
+            w-full h-full 
+            flex flex-row 
+            md:flex-col 
+            items-center justify-evenly gap-4 
+            md:items-start md:justify-start md:gap-4
+            left-0 
+            bg-light-background 
             dark:bg-dark-background
-            md:flex-col md:items-start md:justify-start md:gap-4
+            pb-3 md:pb-0
             `}
         >
             {children}

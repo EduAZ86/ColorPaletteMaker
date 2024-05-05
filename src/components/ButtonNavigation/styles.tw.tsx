@@ -21,9 +21,12 @@ export const ButtonNavigationComponent: FC<IButtonNavigationComponentProps> = ({
             className={`
             flex 
             flex-col relative
-            h-14 w-14
             justify-center items-center 
-            px-2 pb-2 pt-0 gap-2 
+            h-14 w-14
+            md:h-9 md:w-40 
+            px-2 pb-2 pt-2 
+            md:pb-2 md:pt-2
+            gap-2 
             text-light-font bg-transparent 
             rounded-lg 
             cursor-pointer 
@@ -31,21 +34,19 @@ export const ButtonNavigationComponent: FC<IButtonNavigationComponentProps> = ({
             dark:text-dark-font 
             active:shadow-press-button active:dark:shadow-dark-press-button                    
             md:flex-row md:justify-start 
-            md:h-9 md:w-40 
-            md:pb-2 md:pt-2
             md:font-roboto md:text-xs md:items-center 
             `}
             onClick={handlerClick}
         >
             <span
-                    className="
+                className="
                         h-8 w-fit text-2xl text-center 
                         md:text-base md:h-fit">
-                    {option.icon}
-                </span>
-                <span className="text-3xs md:text-base">
-                    {option.name}
-                </span>
+                {option.icon}
+            </span>
+            <span className="text-3xs md:text-base">
+                {option.name}
+            </span>
         </button>
     )
 }

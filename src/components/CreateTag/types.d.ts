@@ -11,7 +11,6 @@ export interface IImputsContainerProps {
 export interface IInputColorTagProps {
     register: UseFormRegister;
     watch: UseFormWatch<FieldValues>;
-    isColection: boolean;
 }
 
 export interface IInputNameTagProps extends Pick<IInputColorTagProps, 'register'> { }
