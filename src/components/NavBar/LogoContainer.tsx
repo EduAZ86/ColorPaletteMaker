@@ -28,7 +28,6 @@ export const LogoContainer = () => {
                 hidden md:block
                 `}
             >
-
             <Typography variant="subTitle">ShareColors</Typography>
             </span>
         </div>

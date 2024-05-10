@@ -5,8 +5,5 @@ export type TInteraction = "fav" | "disfav" | "share" | "download";
 export interface IGetAllPalettes {
     offset: number;
     lengthPage: number;
-}
+};
 
-export interface IIdTagsToFind {
-    arrayIdTags: string[];
-}

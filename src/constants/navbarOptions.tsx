@@ -9,7 +9,6 @@ import { BiSolidHome, BiBookHeart, BiBookAdd, BiSearch, BiCog } from 'react-icon
 const homeIcon = <BiSolidHome className='h-12 text-xl md:text-base' />
 const colectionIcon = <BiBookHeart className='h-12 text-xl md:text-base' />
 const createIcon = <BiBookAdd className='h-12 text-xl md:text-base' />
-const searchIcon = <BiSearch className='h-12 text-xl md:text-base' />
 const settingsIcon = <BiCog className='h-12 text-xl md:text-base' />
 
 const Home = new MenuOptions('Home', '/', homeIcon)
@@ -20,9 +19,7 @@ Home.setSubMenu([
 
 
 const Create = new MenuOptions('Create', '/create', createIcon)
-
 const Colection = new MenuOptions('Colection', '/colection', colectionIcon)
-
 const Settings = new MenuOptions('Settings', '', settingsIcon)
 Settings.setSubMenu([{ name: 'settings' }])
 

@@ -6,11 +6,13 @@ export const ColorCardContainer: FC<IColorCardContainerProps> = ({ children }) =
         <div
             className={`
             flex relative
-            flex-col justify-center
+            flex-col 
+            justify-center
             w-14 h-20
-            md:w-14 md:h-24
+            md:w-14 md:h-20
             items-center 
-            gap-1 p-1        
+            gap-1 p-1
+            md:my-0 my-2        
     `}
         >
             {children}
