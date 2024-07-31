@@ -2,7 +2,7 @@ import { hexToRgb } from "../utils/colorsCalculator";
 import { IColorPallete, IColors, IColorsExa, IDate, ISocial, ITag, IincommigPaletteData } from "@/types/dataApi";
 
 
-export class postDataPalette implements IColorPallete {
+export class postDataPalette  {
     idColors: string;
     colors: IColors;
     tags: ITag[];
