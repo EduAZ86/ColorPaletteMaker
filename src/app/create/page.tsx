@@ -6,9 +6,9 @@ import toast, { Toaster } from 'react-hot-toast';
 import { Typography } from "@/components/Typography";
 import { PaletteColorForm } from "./PaletteColorForm";
 import { SubmitButtonPalette } from "./SubmitButtonPalette";
-import { useDataPaletteStore } from "@/services/dataPaletteStore";
 import { CreatePaletteCard } from "@/components/CreatePaletteCard";
 import { SearchBarTags } from "@/components/SearchBarTags/SearchBarTags";
+import { useDataPaletteStore } from "@/lib/store/dataPaletteStore";
 
 const Create: FC = () => {
     const { handleSubmit, register, reset, watch } = useForm()
