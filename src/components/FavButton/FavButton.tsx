@@ -3,8 +3,9 @@ import React, { useEffect, useState } from 'react';
 import { BiHeart, BiSolidHeart } from 'react-icons/bi';
 import { IFavButtonProps } from './types';
 import { ButtonComponent } from './styles.tw';
-import { useColectionStore } from '@/services/colectionPalettesStore';
-import { useDataPaletteStore } from '@/services/dataPaletteStore';
+import { useColectionStore } from '@/lib/store/colectionPalettesStore';
+import { useDataPaletteStore } from '@/lib/store/dataPaletteStore';
+
 
 const FavButton: React.FC<IFavButtonProps> = ({ palette }) => {
     const [press, setPress] = useState<boolean>(false)

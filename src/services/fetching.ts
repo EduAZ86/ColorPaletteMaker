@@ -1,13 +1,9 @@
+import { fetchData } from "@/lib/axios/axios.instance";
 import { ISendPaletteData, ITag } from "@/types/data";
 import { TInteraction } from "@/types/fetchParams";
 import axios from "axios";
 
-const BASE_URL = "/api";
 
-const fetchData = axios.create({
-    baseURL: BASE_URL,
-    timeout: 5000
-});
 
 export const findTagsByName = async (name: string) => {
     try {

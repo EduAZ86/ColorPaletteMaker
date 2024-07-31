@@ -15,6 +15,8 @@ export const getPalleteByIdController = async (idPalette: string) => {
 };
 
 export const getAllPalletesByPageController = async (lengthPage: string, offset: string) => {
+    console.log('lengthPage', lengthPage, 'offset', offset);
+    
     const data = await PaletteColorModel.find()
         .skip(Number(offset))
         .limit(Number(lengthPage))

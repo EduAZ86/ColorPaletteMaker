@@ -1,6 +1,6 @@
 import connectDB from "@/lib/dbConnect";
 import { NextRequest, NextResponse } from "next/server";
-import { getAllPalletesByPageController, postNewPalleteColorController } from "@/lib/paletteColorsControllers";
+import { getAllPalletesByPageController, postNewPalleteColorController } from "@/lib/paletteColorsServices";
 
 
 export const POST = async (req: any) => {
@@ -14,14 +14,13 @@ export const POST = async (req: any) => {
     }
 };
 
-export const GET = async (req: any) => {
+export const GET = async (req: NextRequest) => {
     try {
         await connectDB()
-        let lengthPageValue, offsetValue;
-        if (req.query) {
-            lengthPageValue = req.query.lengthPage as string;
-            offsetValue = req.query.offset as string;
-        }
+
+        const { searchParams } = new URL(req.url);
+        const lengthPageValue = searchParams.get('lengthPage');
+        const offsetValue = searchParams.get('offset');
         const response = await getAllPalletesByPageController(lengthPageValue!, offsetValue!);
         return NextResponse.json({ data: response }, { status: 200 })
     } catch (error: any) {

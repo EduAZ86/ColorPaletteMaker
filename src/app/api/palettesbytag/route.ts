@@ -1,5 +1,5 @@
 import connectDB from "@/lib/dbConnect";
-import { findPalettesByTags } from "@/lib/paletteColorsControllers";
+import { findPalettesByTags } from "@/lib/paletteColorsServices";
 import { NextRequest, NextResponse } from "next/server";
 
 export const GET = async (req: NextRequest) => {

@@ -1,7 +1,8 @@
 import { FC } from "react"
 import { ITagProps } from "./types"
 import { Typography } from "../Typography"
-import { useDataPaletteStore } from "@/services/dataPaletteStore"
+import { useDataPaletteStore } from "@/lib/store/dataPaletteStore";
+
 
 export const Tag: FC<ITagProps> = ({ color, name, _id, size }) => {
     const { addTagsToSend, removeTagToSend } = useDataPaletteStore();

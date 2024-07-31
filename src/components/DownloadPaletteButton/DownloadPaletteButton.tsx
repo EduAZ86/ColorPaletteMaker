@@ -4,7 +4,8 @@ import React from "react";
 import { BiDownload } from 'react-icons/bi'
 import { Typography } from "../Typography";
 import { IColorPallete } from "@/types/data";
-import { useDataPaletteStore } from "@/services/dataPaletteStore";
+import { useDataPaletteStore } from "@/lib/store/dataPaletteStore";
+
 
 interface DownloadPaletteButtonProps {
     palette: IColorPallete

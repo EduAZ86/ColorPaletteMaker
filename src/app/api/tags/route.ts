@@ -1,13 +1,12 @@
 import connectDB from "@/lib/dbConnect";
 import { NextResponse } from "next/server";
-import { NextApiRequest } from "next";
 import { getTagsByNameController, postNewTagsController } from "@/lib/tagsController";
 
 export const GET = async (req: Request) => {
     await connectDB()
     try {
         const { searchParams } = new URL(req.url)
-        const name = searchParams.get('name')      
+        const name = searchParams.get('name')
         const response = await getTagsByNameController(name!);
         return NextResponse.json({ data: response }, { status: 200 })
     } catch (error: any) {

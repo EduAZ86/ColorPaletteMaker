@@ -2,10 +2,11 @@
 import { FC, useState } from "react";
 import { IInputSearchBarProps } from "./types";
 import { BiSearch, BiX } from 'react-icons/bi';
-import { useDataPaletteStore } from "@/services/dataPaletteStore";
+
 import { Tag } from "./Tag";
 import { ITag } from "@/types/data";
 import Link from "next/link";
+import { useDataPaletteStore } from "@/lib/store/dataPaletteStore";
 export const InputSearchBar: FC<IInputSearchBarProps> = ({ onChange, addTagButton }) => {
     const [isFocused, setIsFocused] = useState<boolean>(false);
     const { tagsToSend, clearTagsToSend } = useDataPaletteStore()

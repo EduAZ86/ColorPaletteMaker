@@ -1,6 +1,6 @@
 import { IColectionPalettesStore } from "@/types/colectionPalettesStore.interface";
 import { create } from "zustand";
-import { getFavsToLocalStorage, removeFromLocalStorage, saveToLocalStorage } from "./serviceOfTheLocalStorage";
+import { getFavsToLocalStorage, removeFromLocalStorage, saveToLocalStorage } from "../../services/serviceOfTheLocalStorage";
 import { IColorPallete } from "@/types/data";
 
 export const useColectionStore = create<IColectionPalettesStore>((set, get) => ({

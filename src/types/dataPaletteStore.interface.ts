@@ -8,7 +8,7 @@ export interface IDataPaletteStore {
     tagsResults: ITag[];
     paletteColor: IColorPallete[];
     currentPaletteColor: IColorPallete | null;
-    getAllPaletteForPage: () => Promise<void>;
+    addPalettes: (newPalettes: IColorPallete[]) => void;  
     clearPalettes: () => void;
     getPaletteForID: (idPalette: string) => Promise<void>;
     clearCurrentPalette: () => void

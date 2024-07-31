@@ -39,7 +39,7 @@ export interface ITag {
 }
 
 export interface IColorPallete {
-    _id?: string;
+    _id: string;
     idColors: string;
     colors: IColors;
     tags: ITag[];

@@ -4,7 +4,8 @@ import useCurrentPressButton from "@/hooks/useCurrentPressButton";
 import ThemeSwitcher from "../ThemeSwitcher";
 import { ISubMenuProps } from "./types";
 import { subMenuOptionType } from "@/class/MenuOptions.class";
-import { useDataPaletteStore } from "@/services/dataPaletteStore";
+import { useDataPaletteStore } from "@/lib/store/dataPaletteStore";
+
 
 export const SubMenu: React.FC<ISubMenuProps> = ({ subMenu }) => {
 

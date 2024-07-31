@@ -4,7 +4,8 @@ import { ResultsSearch } from "./ResultsSearch";
 import { FC, useEffect, useState } from "react";
 import { SearchBarContanier } from "./styles.tw";
 import { InputSearchBar } from "./InputSearchBar";
-import { useDataPaletteStore } from "@/services/dataPaletteStore";
+import { useDataPaletteStore } from "@/lib/store/dataPaletteStore";
+
 
 export const SearchBarTags: FC<ISearchBarProps> = ({ addTagButton }) => {
 

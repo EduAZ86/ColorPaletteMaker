@@ -1,6 +1,6 @@
 import connectDB from "@/lib/dbConnect";
 import { NextRequest, NextResponse } from "next/server";
-import { deletePaletteController, getPalleteByIdController, updateSocialColorPaletteController } from "@/lib/paletteColorsControllers";
+import { deletePaletteController, getPalleteByIdController, updateSocialColorPaletteController } from "@/lib/paletteColorsServices";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 
 export const GET = async (req: NextRequest, context: { params: Params }) => {

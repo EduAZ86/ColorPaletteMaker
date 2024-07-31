@@ -1,6 +1,6 @@
 "use client"
 import { CardMapper } from '@/components/CardMapper'
-import { useColectionStore } from '@/services/colectionPalettesStore'
+import { useColectionStore } from '@/lib/store/colectionPalettesStore'
 import { IColorPallete } from '@/types/data'
 
 import React, { useEffect } from 'react'

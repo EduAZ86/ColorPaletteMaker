@@ -1,6 +1,6 @@
 import { IDataPaletteStore } from "@/types/dataPaletteStore.interface";
 import { create } from "zustand";
-import { findTagsByName, getDataPalettesForPage, getDatapaletteByID, getPalettesByTag, postNewPaletteColor, updateSocialColorPalette } from "./fetching";
+import { findTagsByName, getDataPalettesForPage, getDatapaletteByID, getPalettesByTag, postNewPaletteColor, updateSocialColorPalette } from "../../services/fetching";
 import { IColorPallete, ISendPaletteData, ITag } from "@/types/data";
 import { TInteraction } from "@/types/fetchParams";
 
@@ -11,24 +11,9 @@ export const useDataPaletteStore = create<IDataPaletteStore>((set, get) => ({
     tagsToSend: [],
     tagsResults: [],
     currentPaletteColor: null,
-    getAllPaletteForPage: async () => {
-        const { offset, lengthPage } = get();
-        const morePalettes = await getDataPalettesForPage(offset!, lengthPage!);
-        const filterUniquePalettes = (existingPalettes: IColorPallete[], newPalettes: IColorPallete[]) => {
-            return newPalettes.filter((newPalette: IColorPallete) => (
-                !existingPalettes.some((existingPalette: IColorPallete) => (
-                    existingPalette._id === newPalette._id
-                ))
-            ));
-        };
-        const addMorePalettes = (existingPalettes: IColorPallete[], newPalettes: IColorPallete[]) => {
-            return [...existingPalettes, ...newPalettes];
-        };
-        set(state => ({
-            paletteColor: addMorePalettes(state.paletteColor, filterUniquePalettes(state.paletteColor, morePalettes!))
-        }));
-        set({ offset: offset! + lengthPage! });
-    },
+    addPalettes: (newPalettes) => set((state) => ({
+        paletteColor: [...state.paletteColor, ...newPalettes]
+    })),
     clearPalettes: () => {
         set(() => ({ paletteColor: [] }))
     },
@@ -84,25 +69,24 @@ export const useDataPaletteStore = create<IDataPaletteStore>((set, get) => ({
     },
     setPopularOrder: () => {
         set((state) => ({
-            paletteColor: state.paletteColor.sort((a, b) => {
-                return b.social.favs - a.social.favs
+            paletteColor: [...state.paletteColor].sort((a, b) => {
+                return b.social.favs - a.social.favs;
             })
         }));
     },
     setNewOrder: () => {
         set((state) => ({
-            paletteColor: state.paletteColor.sort((a, b) => {
-                return b.date.create_date_ms - a.date.create_date_ms
+            paletteColor: [...state.paletteColor].sort((a, b) => {
+                return b.date.create_date_ms - a.date.create_date_ms;
             })
         }));
     },
     setRandomOrder: () => {
         set((state) => ({
-            paletteColor: state.paletteColor.sort((a, b) => {
-                return Math.random() - 0.5
-            })
+            paletteColor: [...state.paletteColor].sort(() => Math.random() - 0.5)
         }));
     },
+    
     getPaletteForTag: async (arrayIdTags) => {
         const palettesForNameTag: IColorPallete[] = await getPalettesByTag(arrayIdTags)
         set(() => ({
