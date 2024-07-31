@@ -1,5 +1,5 @@
 "use client"
-import { CardMapper } from '@/components/CardMapper'
+import { CardMapperColection } from '@/components/CardMapper/CardMapperColection'
 import { useColectionStore } from '@/lib/store/colectionPalettesStore'
 import { IColorPallete } from '@/types/data'
 
@@ -16,13 +16,12 @@ const Colection: React.FC = () => {
     }
   }, [])
 
-
   return (
     <main className="
         flex w-full h-full flex-col justify-center items-center pl-0 pb-28
         md:pb-0 md:pl-5 md:pr-4
         ">
-      {LocalColection && LocalColection.length > 0 && <CardMapper arrayColorPalettes={LocalColection as IColorPallete[]} />}
+      {LocalColection && LocalColection.length > 0 && <CardMapperColection arrayColorPalettes={LocalColection as IColorPallete[]} />}
     </main>
   )
 }
