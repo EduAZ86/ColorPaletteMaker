@@ -117,7 +117,7 @@ export const TextButton: FC<ITypographyProps> = ({ align = 'text-left', bold = f
 
 export const Label: FC<ITypographyProps> = ({ align = 'text-left', bold = false, children }) => {
     return (
-        <label
+        <span
             className={`
         md:${align} ${bold ? 'font-bold' : 'font-light'} 
         text-sm font-roboto
@@ -126,7 +126,7 @@ export const Label: FC<ITypographyProps> = ({ align = 'text-left', bold = false,
         `}
         >
             {children}
-        </label>
+        </span>
     );
 };
 export const TextCodeColor: FC<ITypographyProps> = ({ align = 'text-left', bold = false, children }) => {
