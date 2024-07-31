@@ -22,6 +22,7 @@ export const LogoContainer = () => {
                 alt="logo"
                 width={40}
                 height={40}
+                loading="lazy"
             />
             <span
                 className={`
