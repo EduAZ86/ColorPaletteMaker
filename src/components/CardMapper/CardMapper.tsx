@@ -4,9 +4,10 @@ import { PaletteColorCard } from '../PaletteColorCard';
 import { useGetPaletteForPage } from '@/hooks/query/useGetPaletteForPage';
 import { useInView } from 'react-intersection-observer';
 import { useDataPaletteStore } from '@/lib/store/dataPaletteStore';
+import { Loader } from '../Loader/Loader';
 export const CardMapper: React.FC = () => {
 
-    const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useGetPaletteForPage();
+    const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } = useGetPaletteForPage();
     const { ref, inView } = useInView({
         threshold: 0.5
     })
@@ -21,7 +22,7 @@ export const CardMapper: React.FC = () => {
 
     useEffect(() => {
         if (inView && hasNextPage && hasLoaded) {
-            fetchNextPage();  
+            fetchNextPage();
         }
 
     }, [inView, hasNextPage]);
@@ -34,21 +35,27 @@ export const CardMapper: React.FC = () => {
             className='
             w-full h-full flex-col'
         >
-            <div
-                className={`
+            {isLoading
+                ?
+                <Loader />
+                :
+                <div
+                    className={`
                 flex flex-row flex-wrap gap-4 justify-center items-center
                 pb-24 md:pb-4
             `}
-            >
-                {paletteColor.map((palette, index) => (
-                    <PaletteColorCard
-                        key={`${index}-${palette._id}`}
-                        paletteColorProp={palette}
-                    />
-                ))}
-                <div ref={ref} style={{ height: 1 }} />
-                {isFetchingNextPage && <p style={{ position: 'absolute', bottom: '10px', width: '100%', textAlign: 'center' }}>Loading more...</p>}
-            </div>
+                >
+                    {paletteColor.map((palette, index) => (
+                        <PaletteColorCard
+                            key={`${index}-${palette._id}`}
+                            paletteColorProp={palette}
+                        />
+                    ))}
+                    <div ref={ref} className='w-full h-1/2' />
+                    {isFetchingNextPage &&
+                        <Loader />}
+                </div>
+            }
         </div>
     )
 }

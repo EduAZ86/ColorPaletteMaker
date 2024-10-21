@@ -18,9 +18,12 @@ export const GET = async (req: NextRequest) => {
     try {
         await connectDB()
 
-        const { searchParams } = new URL(req.url);
+        const { searchParams } = req.nextUrl;
         const lengthPageValue = searchParams.get('lengthPage');
         const offsetValue = searchParams.get('offset');
+        if (lengthPageValue === null || offsetValue === null) {
+            throw new Error('lengthPage or offset is null');
+        }
         const response = await getAllPalletesByPageController(lengthPageValue!, offsetValue!);
         return NextResponse.json({ data: response }, { status: 200 })
     } catch (error: any) {
